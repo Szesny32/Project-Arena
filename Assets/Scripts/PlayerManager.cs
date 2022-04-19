@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject modelPrefab;
-    public float mouseSensitivity = 200.0f;
+    [SerializeField] private GameObject modelPrefab;
+    [SerializeField] private float mouseSensitivity = 200.0f;
     private GameObject model;
     private GameObject playerCamera;
-    public Vector3 cameraRotation = Vector3.zero;
-    public float cameraMinRange = -30.0f;
-    public float cameraMaxRange = 60.0f;
+    
+    private Vector3 cameraRotation = Vector3.zero;
+    [SerializeField] private float cameraMinRange = -30.0f;
+    [SerializeField] private float cameraMaxRange = 60.0f;
     void Start()
     {
         setModel(modelPrefab);
@@ -22,9 +23,9 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        rotateCamera();
+
     }
-    void setModel(GameObject prefab)
+    private void setModel(GameObject prefab)
     {
         if(prefab != null)
         {
@@ -33,7 +34,7 @@ public class PlayerManager : MonoBehaviour
             model.transform.localPosition = Vector3.zero;
         }
     }
-    void refreshCameraPosition()
+    private void refreshCameraPosition()
     {
         if(model != null)
         {
@@ -44,9 +45,15 @@ public class PlayerManager : MonoBehaviour
             cameraRotation = Vector3.zero;
         }
     }
-    void rotateCamera()
+    public void rotateCamera(Vector3 rotation)
     {
+        cameraRotation += rotation;
         cameraRotation.x =  Mathf.Clamp(cameraRotation.x, cameraMinRange, cameraMaxRange);
         playerCamera.transform.localRotation = Quaternion.Euler(cameraRotation);
     }
+    public float MouseSenstivity()
+    {
+        return mouseSensitivity;
+    }
+    
 }

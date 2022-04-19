@@ -5,17 +5,17 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
 
-    public float walkSpeed = 4.0f;
-    public float runSpeed = 6.0f;
-    public float jumpHeight = 0.6f;
-    public float gravityAcceleration = -9.81f;
+    [SerializeField] private float walkSpeed = 4.0f;
+    [SerializeField] private float runSpeed = 6.0f;
+    [SerializeField] private float jumpHeight = 0.6f;
+    [SerializeField] private float gravityAcceleration = -9.81f;
     
-
-    public CharacterController controller;
+    private CharacterController controller;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private GameObject playerCamera;
     private PlayerManager playerManager;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -68,9 +68,9 @@ public class MovementController : MonoBehaviour
     void mouse()
     {
         //distance = velocity * time
-        float mouseX = playerManager.mouseSensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
-        float mouseY = playerManager.mouseSensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
-        playerManager.cameraRotation.x -= mouseY;
+        float mouseX = playerManager.MouseSenstivity() * Input.GetAxis("Mouse X") * Time.deltaTime;
+        float mouseY = playerManager.MouseSenstivity() * Input.GetAxis("Mouse Y") * Time.deltaTime;
+        playerManager.rotateCamera(new Vector3(-mouseY, 0, 0));
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -92,6 +92,10 @@ public class MovementController : MonoBehaviour
     public Vector3 getDirection()
     {
         return direction;
+    }
+    public bool getIsGrounded()
+    {
+        return controller.isGrounded;
     }
 
 }
