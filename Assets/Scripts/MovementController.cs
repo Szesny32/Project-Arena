@@ -11,24 +11,22 @@ public class MovementController : MonoBehaviour
     public float gravityAcceleration = -9.81f;
     
 
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
-
     private GameObject playerCamera;
     private PlayerManager playerManager;
-    private PlayerStatus playerStatus;
     void Start()
     {
         controller = GetComponent<CharacterController>();
         playerManager = GetComponent<PlayerManager>();
-        playerStatus = GetComponent<PlayerStatus>();
         setController(0.55f, 0.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         gravity();
         movement();
         mouse();
@@ -39,7 +37,7 @@ public class MovementController : MonoBehaviour
         //velocity = acceleration * time
         float lossOfVelocity = gravityAcceleration * Time.deltaTime;
         if(controller.isGrounded)
-            velocity.y = lossOfVelocity;
+                velocity.y = lossOfVelocity;
         else
             velocity.y += lossOfVelocity;
     }
@@ -47,42 +45,18 @@ public class MovementController : MonoBehaviour
     void movement()
     {
         //WASD
-        Vector3 direction = Vector3.zero;
-
+        direction = Vector3.zero;
         direction += transform.right * Input.GetAxis("Horizontal") ;
         direction += transform.forward * Input.GetAxis("Vertical");
         
-        float speed;
+        float speed = 0.0f;
         if(direction.x != 0.0f || direction.z != 0.0f)
-        {
-            bool sprint = Input.GetKey(KeyCode.LeftShift);
-            playerStatus.state = sprint? PlayerStatus.State.Run : PlayerStatus.State.Walk;
-            speed = sprint? runSpeed : walkSpeed;
-        }
-        else
-        {
-            playerStatus.state = PlayerStatus.State.Idlee;
-            speed = 0.0f;
-        }
-
+            speed = Input.GetKey(KeyCode.LeftShift)? runSpeed : walkSpeed;
+        
         //JUMP
-        if(controller.isGrounded)
-        {
-            if(Input.GetKey(KeyCode.Space))
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
-                playerStatus.state = PlayerStatus.State.Jump;
-            }
-        }
-        else
-        {
-            if(velocity.y > 0)
-                playerStatus.state = PlayerStatus.State.Rises; 
-            else
-                playerStatus.state = PlayerStatus.State.Falls; 
-        }
-
-
+        if(Input.GetKey(KeyCode.Space) && controller.isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
+      
         velocity.x = speed*direction.x;
         velocity.z = speed*direction.z;
         
@@ -100,7 +74,6 @@ public class MovementController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-
     void setController(float radius,float stepOffset)
     {
         Vector3 headPoint = transform.Find("Model/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
@@ -110,6 +83,15 @@ public class MovementController : MonoBehaviour
         controller.center = new Vector3(0.0f, ((controller.height/2.0f) + controller.skinWidth) ,0.0f);
         controller.minMoveDistance = 0.0f;
         controller.stepOffset = stepOffset;
+    }
+
+    public Vector3 getVelocity()
+    {
+        return velocity;
+    }
+    public Vector3 getDirection()
+    {
+        return direction;
     }
 
 }

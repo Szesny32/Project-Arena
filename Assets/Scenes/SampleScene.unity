@@ -227,8 +227,8 @@ GameObject:
   - component: {fileID: 929212339}
   - component: {fileID: 929212338}
   - component: {fileID: 929212337}
-  - component: {fileID: 929212340}
   - component: {fileID: 929212341}
+  - component: {fileID: 929212340}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,6 +302,7 @@ MonoBehaviour:
   runSpeed: 6
   jumpHeight: 0.6
   gravityAcceleration: -9.81
+  controller: {fileID: 0}
 --- !u!114 &929212341
 MonoBehaviour:
   m_ObjectHideFlags: 0
