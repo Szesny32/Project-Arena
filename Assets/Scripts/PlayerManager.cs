@@ -18,12 +18,10 @@ public class PlayerManager : MonoBehaviour
         playerCamera = transform.Find("Camera").gameObject;
         Cursor.lockState = CursorLockMode.Locked;
         refreshCameraPosition();
-
     }
 
     void Update()
     {
-
     }
     private void setModel(GameObject prefab)
     {
@@ -55,5 +53,5 @@ public class PlayerManager : MonoBehaviour
     {
         return mouseSensitivity;
     }
-    
 }
+

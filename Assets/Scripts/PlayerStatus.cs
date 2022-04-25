@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public enum State {Idlee, Walk, Run, Jump, Falls, Rises};
+    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming};
     
     [HideInInspector] public State state; 
     
@@ -16,6 +16,7 @@ public class PlayerStatus : MonoBehaviour
     {
         playerController = GetComponent<MovementController>();
         state = State.Idlee;
+
     }
 
     // Update is called once per frame
