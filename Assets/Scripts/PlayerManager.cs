@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 200.0f;
     private GameObject model;
     private GameObject playerCamera;
-    
+     [SerializeField] private bool debug = false;
     private Vector3 cameraRotation = Vector3.zero;
     [SerializeField] private float cameraMinRange = -30.0f;
     [SerializeField] private float cameraMaxRange = 60.0f;
@@ -22,6 +22,22 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+
+        if(debug)
+        {
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            Debug.DrawRay(ray.origin, ray.direction*20.0f, Color.red);
+            RaycastHit hit;
+            if(Input.GetMouseButtonDown(0))
+            {
+                if(Physics.Raycast(ray, out hit))
+                {
+                    HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
+                    if(HP)
+                        HP.takeDamage(25.0f);
+                    }  
+            }
+        }
     }
     private void setModel(GameObject prefab)
     {
