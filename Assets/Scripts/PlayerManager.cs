@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if(Physics.Raycast(ray, out hit))
                 {
+                    Debug.Log(hit.transform.gameObject);
                     HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
                     if(HP)
                         HP.takeDamage(25.0f);
