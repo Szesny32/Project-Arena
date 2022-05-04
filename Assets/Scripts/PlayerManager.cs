@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private GameObject modelPrefab;
+    //[SerializeField] private GameObject modelPrefab;
     [SerializeField] private float mouseSensitivity = 200.0f;
-    private GameObject model;
+    public GameObject model;
     private GameObject playerCamera;
      [SerializeField] private bool debug = false;
     private Vector3 cameraRotation = Vector3.zero;
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerStatus.State playerPrevState;
     void Start()
     {
-        setModel(modelPrefab);
+       // setModel(modelPrefab);
         playerCamera = transform.Find("Camera").gameObject;
         Cursor.lockState = CursorLockMode.Locked;
         refreshCameraPosition();
