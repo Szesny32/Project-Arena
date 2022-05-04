@@ -15,11 +15,11 @@ C:/Users/Szesny/Desktop/Project-Arena
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54787
+63992
 Successfully changed project path to: C:/Users/Szesny/Desktop/Project-Arena
 C:/Users/Szesny/Desktop/Project-Arena
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 24.55 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 24.57 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Resources/UnitySubsystems
@@ -35,76 +35,76 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56520
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56532
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001494 seconds.
+Registered in 0.223036 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 24.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 23.89 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.466 seconds
+- Completed reload, in  2.997 seconds
 Domain Reload Profiling:
-	ReloadAssembly (466ms)
-		BeginReloadAssembly (49ms)
+	ReloadAssembly (2997ms)
+		BeginReloadAssembly (2040ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (362ms)
-			LoadAssemblies (47ms)
+		EndReloadAssembly (603ms)
+			LoadAssemblies (2041ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (129ms)
+			SetupTypeCache (357ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (24ms)
-			SetupLoadedEditorAssemblies (123ms)
+			SetupLoadedEditorAssemblies (125ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (24ms)
 				BeforeProcessingInitializeOnLoad (7ms)
-				ProcessInitializeOnLoadAttributes (65ms)
-				ProcessInitializeOnLoadMethodAttributes (22ms)
+				ProcessInitializeOnLoadAttributes (64ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001929 seconds.
+Registered in 0.173254 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.763 seconds
+- Completed reload, in  3.063 seconds
 Domain Reload Profiling:
-	ReloadAssembly (764ms)
-		BeginReloadAssembly (117ms)
+	ReloadAssembly (3063ms)
+		BeginReloadAssembly (119ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (14ms)
-		EndReloadAssembly (600ms)
-			LoadAssemblies (70ms)
+			CreateAndSetChildDomain (15ms)
+		EndReloadAssembly (2897ms)
+			LoadAssemblies (1205ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (207ms)
+			SetupTypeCache (690ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (32ms)
-			SetupLoadedEditorAssemblies (224ms)
+			SetupLoadedEditorAssemblies (903ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (0ms)
 				BeforeProcessingInitializeOnLoad (42ms)
-				ProcessInitializeOnLoadAttributes (167ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
+				ProcessInitializeOnLoadAttributes (314ms)
+				ProcessInitializeOnLoadMethodAttributes (538ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -112,7 +112,7 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
 Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1509 Unused Serialized files (Serialized files now loaded: 0)
@@ -120,7 +120,7 @@ System memory in use before: 68.3 MB.
 System memory in use after: 68.4 MB.
 
 Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 1946.
-Total: 1.995500 ms (FindLiveObjects: 0.099500 ms CreateObjectMapping: 0.039900 ms MarkObjects: 1.809000 ms  DeleteObjects: 0.046400 ms)
+Total: 1.948000 ms (FindLiveObjects: 0.097100 ms CreateObjectMapping: 0.040500 ms MarkObjects: 1.765700 ms  DeleteObjects: 0.044200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,594 +134,117 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7a359a37b31666ec9a885e9bb8badc5') in 0.167729 seconds 
+  path: Assets/Scripts/PlayerManager.cs
+  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd133c07b9b343cdf83e92bb34205de3') in 0.020539 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 12.420848 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70b4f342118ba88fb893e7bf69829a93') in 0.083786 seconds 
+  Time since last request: 15.564701 seconds.
+  path: Assets/Scripts/PlayerManager.cs
+  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f1bb3afb621fb19763cc3a922174789') in 0.002257 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 24.643343 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37e0b98ee3f2f939d31df0efb4e0be8a') in 0.078872 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.569817 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71bc01adf793e801bfd46b34d22a918f') in 0.081780 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.972374 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c78270dc87e00d227123ac3bbbf342ec') in 0.071909 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.942970 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f314f7577b606382f9b5a73f152a6cd') in 0.068772 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.798710 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db49517c459dd98e1bf2a66f2a8d1fc') in 0.074423 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.770590 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '917e4ce382a0c411a421f342e914c246') in 0.067432 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.977864 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e36260cc11e246b14f2c345700f8176d') in 0.071152 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.953727 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ccad2984ad02e8ed14ab1cf01680c13') in 0.068317 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.748998 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e45fe6a2c7b0f9f7e00eae5b7c37154d') in 0.072886 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.154981 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2325f0ffdd88ae3e91dd8ce7ce2742a') in 0.070232 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.572309 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aeb6a0a3515415cf74f0132d55e0b99a') in 0.072936 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.175583 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd51fbe5bbd15c23e69d018da0651945') in 0.068017 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.150450 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab
-  artifactKey: Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Black.prefab using Guid(c266c61b42ce56a4ca7e9190ef1209e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfcb07eb9603e8daaa6f3fc1fff71edc') in 0.067755 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.548195 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32bfbc2f69a34eca64f934629b2fb8af') in 0.068459 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.430203 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5db6665a2635161005a4311bb8d0ff1') in 0.061970 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.334589 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b22a30f088fc149955c42566ee6dfc6b') in 0.060954 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.193585 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd650537ef5bbc5d9128e731934c51622') in 0.069232 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.151014 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc3640e2d9046e59e07823d6be1239d6') in 0.061521 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.162060 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c71c675bce54172741dd172049ebb38') in 0.063920 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.747965 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7030ecab76e2129a3f45728a53e1268f') in 0.060888 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.374209 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55b3bcac89673b16b071cd5d447c7464') in 0.062831 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.167198 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd39e38eab5083d5b9398bdf20f07177e') in 0.060757 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.178480 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22b4f0f706c271863d602e909dcc1c2e') in 0.065120 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.755743 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3228961176ebeaa7d0fb2636e3211b40') in 0.061223 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.581984 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a08fb4dcb26f8c07a1c2cfc0b84056f5') in 0.064903 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.741550 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63d405d0bca2034a22e76ad83dc63f1d') in 0.062839 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.772122 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dd50e4c9d7c8333ab1a0c30ff3a2c4f') in 0.065357 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 23.380153 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abbe9c366a6dc80a30aeb2f84cb030bc') in 0.062929 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.960617 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab
-  artifactKey: Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Blue.prefab using Guid(3fc233a9407d11f46a1983e4692babf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c915784862c613daeee16e400de763de') in 0.061955 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 32.662343 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cfb81a4f893a09d5dfe3cf7a95394e8') in 0.070533 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.388014 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '872f172fd3495b488b173c66ed0ea8a1') in 0.068846 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.012572 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '816063de3c48e30fcd1d93013509cf0a') in 0.072446 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.128967 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fea4b0a1f71a5d62c24e06738741c6a') in 0.067823 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.971248 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f72617fa881d462f1e2ad1a64450e587') in 0.073032 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.536520 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96bec40fe425415123faca65e1c0b783') in 0.067313 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.330493 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '371f82d83c6bab24a37822965ec49e75') in 0.066933 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.421713 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b0e955205381f2e605b1c633d661b1b') in 0.073596 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.141681 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d5fbd5f983e7bcec9ba8402e86f9ed') in 0.068192 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.560407 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baf98050aeab5e48e6ec78a9f551de37') in 0.070736 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.146789 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0cba1d58191e5e623adbbcdf4b7b497') in 0.068268 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.938605 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8e88dbce3fe26101ec6705adc8cf797') in 0.067416 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.331796 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1ac11550edeb94171628830741c2300') in 0.073037 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.140494 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab
-  artifactKey: Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo1.prefab using Guid(c816c50f1076b564bbe9891c3e74b00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c31a1aa32ab156389e6aee23645a6a2') in 0.067396 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.760838 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab193c3d9fe68f244aad3955b8e73f78') in 0.084683 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.716663 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaaffcaf845314b913af3c8268a80482') in 0.073827 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.537072 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3dffbb59a52c9bbb5b0a32105e1d81e9') in 0.075854 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.145007 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b34bf25835b66a47e08d930389b30a2') in 0.073416 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.339169 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb57e31ac1f4220491f524a68330654c') in 0.073544 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.753180 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e46689a106654f52981528a3946ce566') in 0.076339 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.139501 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d44d1d8a80dc6b96ed2a40b4b7cc19c') in 0.074689 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.339205 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ad36b50bad746894286f12a296cb6fd') in 0.074703 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.776952 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8c89c0fc04f0d37f2cc3b8f65940426') in 0.073763 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.552019 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9dafa8d922064d1ab08c83ac1458b59') in 0.079878 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.556209 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efae5a15196c6449f680b7b8884a547d') in 0.074097 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.143497 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e001cb24e7a1484a3f8e79ab021aa2d6') in 0.077751 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.529668 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab
-  artifactKey: Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Camo2.prefab using Guid(23e084d1633f7674e81ebd4cad264047) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00e5d434484c4fc5dfa91bee50f921ef') in 0.076731 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.636674 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3dca11b3cc6d1a366f62dd01b8811487') in 0.071977 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.546543 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '635f97983b0b3392e5d94fb7004c8742') in 0.066875 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.749320 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d2d0a9db881f14be50b4e5f323cd5e') in 0.074716 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.923420 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb4a1cd69569382022cd9d9d2fd3646e') in 0.068412 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.530833 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a7621c65ab0625c9dd755a89b1d2f97') in 0.066027 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.770948 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb23938b90a8f8afdd3a848a9434af80') in 0.072201 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.548088 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f55aa9addb4975313f9ed08b8fb7d643') in 0.068324 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.144983 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0b89a175a0db7c6ca437b669397fa00') in 0.072031 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.136992 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c1a7002f10cd8d1f01c1261478af97') in 0.067213 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.555652 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57aebae4a654c097777309b2be6d9538') in 0.073487 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.742620 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a516cbed32b9edd808906ad5017324ac') in 0.067263 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.330839 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38d164d790ae98fe517bab7ac0add7f5') in 0.067654 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.556508 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b11ed73fc807c78ce796019554debf') in 0.071733 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.143015 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ba9136a2479e6266570602b07cc704') in 0.067122 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.331969 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f8f48c122b6b4aedf476c70e1e8d15c') in 0.066433 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.363882 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab
-  artifactKey: Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Green.prefab using Guid(ebd2497aad4ffde43abb1d9b595d8937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3510b84c82e6f2ec212c8050679bc52') in 0.072257 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 14.115281 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab
-  artifactKey: Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab using Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d8857cd27c0c1eed94b81719214dcf2') in 0.070497 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.790790 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab
-  artifactKey: Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab using Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cc492fd51b471e94e655fd6b8685c13') in 0.067165 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.801949 seconds.
-  path: Assets/Robot_Soldier/Meshes/Floor.FBX
-  artifactKey: Guid(9f09bf7094e1b9343afb24906c65f1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Meshes/Floor.FBX using Guid(9f09bf7094e1b9343afb24906c65f1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17ae6c93ec142a472c99dade269c6f91') in 0.069822 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000131 seconds.
-  path: Assets/Robot_Soldier/Meshes/Robot_Soldier.fbx
-  artifactKey: Guid(535511bb156e7f54f83f305d96a1c4ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Meshes/Robot_Soldier.fbx using Guid(535511bb156e7f54f83f305d96a1c4ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27bea4ec8b7ec2e0be82d5710d805018') in 0.062639 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 66.578042 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab
-  artifactKey: Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_Red.prefab using Guid(08f5427fe0d15ad47a5a1bb70b6156c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33cb6e078c2b4a85b6e755fa72d22042') in 0.067358 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.292861 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7de57e312245f7cb67157173168bbce') in 0.073607 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.734892 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bb3740efcf56c689cc3e91217605498') in 0.066951 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.139898 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bacf5f4aaae52d2ad32007f20e49b4dc') in 0.072351 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.150131 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7e3170a293a346aeb9549b792f90779') in 0.066977 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.147831 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d027f25e19eeb3a65b6435c84b5dd05') in 0.069676 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.940816 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98ea3fc03fe93ce3fb5ce94e0d0b8b94') in 0.066286 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.332034 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0111fbc7f927d27a93aaa3bfcdc87509') in 0.067246 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.748446 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1b6f9bfda5b35205474cffddbc79c93') in 0.074746 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.950162 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f54befaba7c97fdc107ec21a3874d0e') in 0.067950 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.951822 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a7c0e8162551811efd3f227d97558f1') in 0.068410 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.946041 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4babd9d23cdd326c52e43afb5a844357') in 0.067134 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.553986 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dccf915d11b64747addf36ecc7e3fc29') in 0.071735 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.337170 seconds.
-  path: Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab
-  artifactKey: Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Robot_Soldier/Prefabs/Robot_Soldier_White.prefab using Guid(0814aba0a5f87494cb000251ab82361f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '103b60a9c3216def4c4dde4621e1ca48') in 0.069541 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 75.850035 seconds.
-  path: Assets/Materials/111111.mat
-  artifactKey: Guid(7e387ff19dbf1c04aacdb5d5a7b4b95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/111111.mat using Guid(7e387ff19dbf1c04aacdb5d5a7b4b95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82d1ff1274e57d0d1e298652ae25053d') in 0.009846 seconds 
+  Time since last request: 46.252838 seconds.
+  path: Assets/Scripts/PlayerManager.cs
+  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abf207ed7e000f5540b4ac504afb6d33') in 0.002711 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001808 seconds.
+Registered in 0.001773 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.714 seconds
+Domain Reload Profiling:
+	ReloadAssembly (715ms)
+		BeginReloadAssembly (87ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (582ms)
+			LoadAssemblies (72ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (204ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (28ms)
+			SetupLoadedEditorAssemblies (209ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (38ms)
+				ProcessInitializeOnLoadAttributes (155ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.3 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1948.
+Total: 1.911800 ms (FindLiveObjects: 0.098800 ms CreateObjectMapping: 0.042200 ms MarkObjects: 1.756500 ms  DeleteObjects: 0.013700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 66.429784 seconds.
+  path: Assets/Scripts/PlayerManager.cs
+  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d86d86ece32687e543107bb96339fda') in 0.003165 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001795 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.781 seconds
+- Completed reload, in  0.705 seconds
 Domain Reload Profiling:
-	ReloadAssembly (781ms)
-		BeginReloadAssembly (93ms)
+	ReloadAssembly (706ms)
+		BeginReloadAssembly (85ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (641ms)
-			LoadAssemblies (88ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (574ms)
+			LoadAssemblies (71ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (239ms)
+			SetupTypeCache (202ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (214ms)
+			SetupLoadedEditorAssemblies (206ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (38ms)
-				ProcessInitializeOnLoadAttributes (160ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
+				BeforeProcessingInitializeOnLoad (37ms)
+				ProcessInitializeOnLoadAttributes (153ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -730,11 +253,11 @@ Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 85.8 MB.
-System memory in use after: 85.9 MB.
+System memory in use before: 68.2 MB.
+System memory in use after: 68.4 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1992.
-Total: 1.947300 ms (FindLiveObjects: 0.102700 ms CreateObjectMapping: 0.040700 ms MarkObjects: 1.787800 ms  DeleteObjects: 0.015400 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1950.
+Total: 1.892500 ms (FindLiveObjects: 0.096900 ms CreateObjectMapping: 0.041000 ms MarkObjects: 1.741000 ms  DeleteObjects: 0.013000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -747,34 +270,28 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  Time since last request: 7.843828 seconds.
-  path: Assets/Scripts/PlayerManager.cs
-  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77f4bdd34188e64f2319d899d5275cb6') in 0.007274 seconds 
-========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001829 seconds.
+Registered in 0.001850 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.730 seconds
+- Completed reload, in  0.709 seconds
 Domain Reload Profiling:
-	ReloadAssembly (730ms)
-		BeginReloadAssembly (84ms)
+	ReloadAssembly (709ms)
+		BeginReloadAssembly (85ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (23ms)
-		EndReloadAssembly (591ms)
-			LoadAssemblies (69ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (579ms)
+			LoadAssemblies (71ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (217ms)
+			SetupTypeCache (203ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (29ms)
 			SetupLoadedEditorAssemblies (208ms)
@@ -793,11 +310,68 @@ Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 85.8 MB.
-System memory in use after: 85.9 MB.
+System memory in use before: 68.3 MB.
+System memory in use after: 68.4 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1994.
-Total: 2.491200 ms (FindLiveObjects: 0.169600 ms CreateObjectMapping: 0.059900 ms MarkObjects: 2.244300 ms  DeleteObjects: 0.016800 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1952.
+Total: 1.936400 ms (FindLiveObjects: 0.098100 ms CreateObjectMapping: 0.041800 ms MarkObjects: 1.783200 ms  DeleteObjects: 0.012800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002025 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.711 seconds
+Domain Reload Profiling:
+	ReloadAssembly (711ms)
+		BeginReloadAssembly (83ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (582ms)
+			LoadAssemblies (69ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (199ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (216ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (38ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.3 MB.
+System memory in use after: 68.4 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1954.
+Total: 1.945000 ms (FindLiveObjects: 0.099300 ms CreateObjectMapping: 0.042300 ms MarkObjects: 1.788900 ms  DeleteObjects: 0.014000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -811,36 +385,150 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 21.778216 seconds.
-  path: Assets/Scripts/PlayerManager.cs
-  artifactKey: Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/PlayerManager.cs using Guid(040e0b7cbe96a394e8171d103d94aaa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb7f88b583050b2787b689dadd17946a') in 0.003193 seconds 
+  Time since last request: 154.936695 seconds.
+  path: Assets/Scripts/MovementController.cs
+  artifactKey: Guid(5e9da5c37cd0e944dae22770933750e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MovementController.cs using Guid(5e9da5c37cd0e944dae22770933750e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '341f7f8df5bd1015b8b1ca2677bf90e5') in 0.007561 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001883 seconds.
+Registered in 0.001813 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.700 seconds
+Domain Reload Profiling:
+	ReloadAssembly (701ms)
+		BeginReloadAssembly (83ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (571ms)
+			LoadAssemblies (70ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (200ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (206ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (37ms)
+				ProcessInitializeOnLoadAttributes (153ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.3 MB.
+System memory in use after: 68.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1955.
+Total: 2.060100 ms (FindLiveObjects: 0.113300 ms CreateObjectMapping: 0.047600 ms MarkObjects: 1.882500 ms  DeleteObjects: 0.015900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001825 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
 - Completed reload, in  0.709 seconds
 Domain Reload Profiling:
 	ReloadAssembly (709ms)
-		BeginReloadAssembly (86ms)
+		BeginReloadAssembly (85ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (24ms)
-		EndReloadAssembly (577ms)
-			LoadAssemblies (68ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (578ms)
+			LoadAssemblies (69ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (203ms)
+			SetupTypeCache (201ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (208ms)
+			SetupLoadedEditorAssemblies (211ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (38ms)
+				ProcessInitializeOnLoadAttributes (157ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.3 MB.
+System memory in use after: 68.4 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1957.
+Total: 1.974200 ms (FindLiveObjects: 0.103700 ms CreateObjectMapping: 0.041300 ms MarkObjects: 1.814200 ms  DeleteObjects: 0.014200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001848 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.715 seconds
+Domain Reload Profiling:
+	ReloadAssembly (715ms)
+		BeginReloadAssembly (83ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (585ms)
+			LoadAssemblies (69ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (210ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (207ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
@@ -853,14 +541,125 @@ Domain Reload Profiling:
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.3 MB.
+System memory in use after: 68.4 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1959.
+Total: 2.004100 ms (FindLiveObjects: 0.103500 ms CreateObjectMapping: 0.041300 ms MarkObjects: 1.844300 ms  DeleteObjects: 0.014300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1028.030269 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Black.mat
+  artifactKey: Guid(d5aafb5ec9da01242b0ee1cf8e1b5945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Black.mat using Guid(d5aafb5ec9da01242b0ee1cf8e1b5945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d0434d75fa7959d36d889967e82f6bb') in 0.163992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Green.mat
+  artifactKey: Guid(edc28d4cd35704248a4d6909e8092b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Green.mat using Guid(edc28d4cd35704248a4d6909e8092b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49d2068cb896c6202b987c7137b06e79') in 0.070124 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Red.mat
+  artifactKey: Guid(5bfae0fb4183d0946962f5ab68bdcf31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Red.mat using Guid(5bfae0fb4183d0946962f5ab68bdcf31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffb84fd59f22cee781e4c66460bcb09a') in 0.064107 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_White.mat
+  artifactKey: Guid(664d3304bbcfc90499aae4313f7eb929) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_White.mat using Guid(664d3304bbcfc90499aae4313f7eb929) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcf4958d42813ed6cd00b0d25567860d') in 0.064085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Rifle.mat
+  artifactKey: Guid(58c2cf994000c2e459d502d5b1700f29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Rifle.mat using Guid(58c2cf994000c2e459d502d5b1700f29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cccceb76971fccbb4298d45a7df5f91') in 0.035702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Camo1.mat
+  artifactKey: Guid(7655bd330033f864d8d47fade18486b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Camo1.mat using Guid(7655bd330033f864d8d47fade18486b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47e726b20b6f3c9164c10a8cc7a3eae6') in 0.062676 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Camo2.mat
+  artifactKey: Guid(8312736b2b14588498d33a00a622c8d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Camo2.mat using Guid(8312736b2b14588498d33a00a622c8d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69b3bf1b8a5509a0f6b5ab6cbca9da2d') in 0.061210 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/Robot_Soldier/Materials/Robot_Soldier_Blue.mat
+  artifactKey: Guid(1654ec2413acdbd4481c58b3371dbec3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Robot_Soldier_Blue.mat using Guid(1654ec2413acdbd4481c58b3371dbec3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1073cb2033f4a4ed9889fd9ec41b0f5a') in 0.061848 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Robot_Soldier/Materials/Floor.mat
+  artifactKey: Guid(ff711c43fd3d587448442dd3bff75ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Robot_Soldier/Materials/Floor.mat using Guid(ff711c43fd3d587448442dd3bff75ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6d35295c94938befc59a338248205d9') in 0.014761 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001863 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 85.8 MB.
-System memory in use after: 85.9 MB.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.709 seconds
+Domain Reload Profiling:
+	ReloadAssembly (710ms)
+		BeginReloadAssembly (83ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (581ms)
+			LoadAssemblies (70ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (200ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (211ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (39ms)
+				ProcessInitializeOnLoadAttributes (157ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.6 MB.
+System memory in use after: 71.7 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1996.
-Total: 2.029700 ms (FindLiveObjects: 0.119000 ms CreateObjectMapping: 0.046800 ms MarkObjects: 1.845900 ms  DeleteObjects: 0.017300 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2001.
+Total: 1.944800 ms (FindLiveObjects: 0.110700 ms CreateObjectMapping: 0.045600 ms MarkObjects: 1.773700 ms  DeleteObjects: 0.014400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 

@@ -596,6 +596,10 @@ MonoBehaviour:
   debug: 1
   cameraMinRange: -30
   cameraMaxRange: 60
+  walkSpeed: 4
+  runSpeed: 6
+  jumpHeight: 0.6
+  gravityAcceleration: -9.81
 --- !u!143 &929212338
 CharacterController:
   m_ObjectHideFlags: 0
@@ -641,10 +645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9da5c37cd0e944dae22770933750e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
-  runSpeed: 6
-  jumpHeight: 0.6
-  gravityAcceleration: -9.81
 --- !u!114 &929212341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  debug: 0
+  debug: 1
 --- !u!114 &929212342
 MonoBehaviour:
   m_ObjectHideFlags: 0
