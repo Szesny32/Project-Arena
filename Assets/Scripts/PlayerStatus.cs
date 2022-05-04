@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming};
+    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchMove};
     
     public State state; 
     [SerializeField] private bool debug = false;

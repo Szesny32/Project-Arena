@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float cameraMinRange = -30.0f;
     [SerializeField] private float cameraMaxRange = 60.0f;
 
+    [SerializeField] private float crouchSpeed = 2.0f;
     [SerializeField] private float walkSpeed = 4.0f;
     [SerializeField] private float runSpeed = 6.0f;
     [SerializeField] private float jumpHeight = 0.6f;
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerStatus playerStatus;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
+    private PlayerStatus.State playerPrevState;
     void Start()
     {
         setModel(modelPrefab);
@@ -106,6 +108,8 @@ void shootingTest()
 
     void movement()
     {
+        playerPrevState = playerStatus.state;
+
         direction = Vector3.zero;
         direction += transform.right * Input.GetAxis("Horizontal") ;
         direction += transform.forward * Input.GetAxis("Vertical");
@@ -116,9 +120,23 @@ void shootingTest()
 
             if(direction.x != 0.0f || direction.z != 0.0f)
                 {
-                    speed = Input.GetKey(KeyCode.LeftShift)? runSpeed : walkSpeed;
-                    playerStatus.state = Input.GetKey(KeyCode.LeftShift)? PlayerStatus.State.Run : PlayerStatus.State.Walk;
+                    if(Input.GetKey(KeyCode.LeftShift)){
+                        speed = runSpeed;
+                        playerStatus.state = PlayerStatus.State.Run;
+                    }
+                    else if(Input.GetKey(KeyCode.LeftControl)){
+                        speed = crouchSpeed;
+                        playerStatus.state = PlayerStatus.State.CrouchMove;
+                    }
+                    else{
+                        speed =  walkSpeed;
+                        playerStatus.state = PlayerStatus.State.Walk;
+                    }
+                    
                 }
+            else if(Input.GetKey(KeyCode.LeftControl)){
+                playerStatus.state = PlayerStatus.State.Crouch;
+            }
             else
                 playerStatus.state = PlayerStatus.State.Idlee;
             
@@ -128,7 +146,7 @@ void shootingTest()
                     velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
                     playerStatus.state = PlayerStatus.State.Jump;
                 }
-        
+                
             velocity.x = speed*direction.x;
             velocity.z = speed*direction.z;
         }
@@ -144,6 +162,11 @@ void shootingTest()
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;
         controller.Move(distance);
+    
+        if(playerPrevState != playerStatus.state){
+            updateControllerHeight();
+            refreshCameraPosition();
+        }
     }
     
 
@@ -156,6 +179,12 @@ void shootingTest()
         controller.center = new Vector3(0.0f, ((controller.height/2.0f) + controller.skinWidth) ,0.0f);
         controller.minMoveDistance = 0.0f;
         controller.stepOffset = stepOffset;
+    }
+
+    void updateControllerHeight(){
+        Vector3 headPoint = transform.Find("Model/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
+        controller.height = headPoint.y - transform.position.y;
+        controller.center = new Vector3(0.0f, ((controller.height/2.0f) + controller.skinWidth) ,0.0f);
     }
 
     

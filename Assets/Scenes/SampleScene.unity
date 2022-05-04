@@ -596,6 +596,7 @@ MonoBehaviour:
   debug: 1
   cameraMinRange: -30
   cameraMaxRange: 60
+  crouchSpeed: 2
   walkSpeed: 4
   runSpeed: 6
   jumpHeight: 0.6

@@ -99,7 +99,7 @@ public class Crosshair : MonoBehaviour
             break; 
 
             default:
-            Debug.Log("ERROR "+playerObject.name+" state undefined");
+            // Debug.Log("Custom ERROR "+playerObject.name+" state undefined");
             break;
 
         }
