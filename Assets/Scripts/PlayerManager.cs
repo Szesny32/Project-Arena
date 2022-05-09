@@ -139,24 +139,24 @@ public class PlayerManager : NetworkBehaviour {
             if (direction.x != 0.0f || direction.z != 0.0f) {
                 if (Input.GetKey(KeyCode.LeftShift)) {
                     speed = runSpeed;
-                    UpdateStatusServerRpc(PlayerStatus.State.Run);
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Run);
                 } else if (Input.GetKey(KeyCode.LeftControl)) {
                     speed = crouchSpeed;
-                    UpdateStatusServerRpc(PlayerStatus.State.CrouchMove);
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchMove);
                 } else {
                     speed = walkSpeed;
-                    UpdateStatusServerRpc(PlayerStatus.State.Walk);
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
 
             } else if (Input.GetKey(KeyCode.LeftControl)) {
-                UpdateStatusServerRpc(PlayerStatus.State.Crouch);
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);
             } else
-                UpdateStatusServerRpc(PlayerStatus.State.Idlee);
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
 
             //JUMP
             if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
-                UpdateStatusServerRpc(PlayerStatus.State.Jump);
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Jump);
             }
 
             velocity.x = speed * direction.x;
@@ -165,9 +165,9 @@ public class PlayerManager : NetworkBehaviour {
             if (direction.x != 0.0f || direction.z != 0.0f)
                 speed = walkSpeed;
             if (velocity.y > 0)
-                UpdateStatusServerRpc(PlayerStatus.State.Rises);
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Rises);
             else
-                UpdateStatusServerRpc(PlayerStatus.State.Falls);
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Falls);
         }
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;

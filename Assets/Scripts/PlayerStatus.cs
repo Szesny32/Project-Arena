@@ -10,7 +10,10 @@ public class PlayerStatus : NetworkBehaviour {
 
 
     void Start()
-    {
+    {   
+        if (!IsLocalPlayer) {
+            return;
+        }
         state.Value = State.Run;
     }
 
@@ -20,6 +23,14 @@ public class PlayerStatus : NetworkBehaviour {
 
         if(debug)
             Debug.Log(state);
+    }
+
+    
+    [ServerRpc]
+    public void UpdateStatusServerRpc(PlayerStatus.State newState) {
+
+        state.Value = newState;
+
     }
 
 
