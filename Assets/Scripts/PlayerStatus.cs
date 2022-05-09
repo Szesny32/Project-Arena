@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class PlayerStatus : NetworkBehaviour {
     public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchMove};
-    
-    public State state; 
+    public NetworkVariable<State> state = new NetworkVariable<State>();
     [SerializeField] private bool debug = false;
 
 
     void Start()
     {
-        state = State.Idlee;
+        state.Value = State.Run;
     }
 
     // Update is called once per frame
@@ -23,7 +22,7 @@ public class PlayerStatus : NetworkBehaviour {
             Debug.Log(state);
     }
 
-    
+
 }
 
 

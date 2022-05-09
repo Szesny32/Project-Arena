@@ -68,7 +68,7 @@ public class Crosshair : MonoBehaviour
 
         crosshairConfig();
 
-        switch (status.state)
+        switch (status.state.Value)
         {
             case PlayerStatus.State.Idlee:
             currentSize = Mathf.Lerp(currentSize, normalSize, Time.deltaTime*speed);

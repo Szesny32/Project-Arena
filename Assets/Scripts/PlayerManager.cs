@@ -20,7 +20,7 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private float gravityAcceleration = -9.81f;
     [SerializeField] private NetworkVariable<Vector3> networkPositionDirection = new NetworkVariable<Vector3>();
     [SerializeField] private NetworkVariable<Vector3> networkRotationDirection = new NetworkVariable<Vector3>();
-    [SerializeField] private NetworkVariable<PlayerStatus.State> networkPlayerStatus = new NetworkVariable<PlayerStatus.State>();
+   
 
     private CharacterController controller;
     private PlayerStatus playerStatus;
@@ -54,6 +54,7 @@ public class PlayerManager : NetworkBehaviour {
             gravity();
             mouse();
             movement();
+            UpdateClientServerRpc(transform.position, transform.eulerAngles);
         }
     }
 
@@ -84,8 +85,8 @@ public class PlayerManager : NetworkBehaviour {
             Vector3 headPoint = model.transform.Find("Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
             Vector3 position = headPoint + new Vector3(0.0f, 0.1f, 0.12f) - transform.position;
             playerCamera.transform.localPosition = position;
-            playerCamera.transform.localRotation = Quaternion.identity;
-            cameraRotation = Vector3.zero;
+            //playerCamera.transform.localRotation = Quaternion.identity;
+            //cameraRotation = Vector3.zero;
         }
     }
 
@@ -101,7 +102,7 @@ public class PlayerManager : NetworkBehaviour {
     [ServerRpc]
     public void UpdateStatusServerRpc(PlayerStatus.State newState) {
 
-        networkPlayerStatus.Value = newState;
+        playerStatus.state.Value = newState;
 
     }
 
@@ -126,7 +127,7 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     void movement() {
-        playerPrevState = playerStatus.state;
+        //playerPrevState = playerStatus.state;
 
         direction = Vector3.zero;
         direction += transform.right * Input.GetAxis("Horizontal");
@@ -138,24 +139,24 @@ public class PlayerManager : NetworkBehaviour {
             if (direction.x != 0.0f || direction.z != 0.0f) {
                 if (Input.GetKey(KeyCode.LeftShift)) {
                     speed = runSpeed;
-                    playerStatus.state = PlayerStatus.State.Run;
+                    UpdateStatusServerRpc(PlayerStatus.State.Run);
                 } else if (Input.GetKey(KeyCode.LeftControl)) {
                     speed = crouchSpeed;
-                    playerStatus.state = PlayerStatus.State.CrouchMove;
+                    UpdateStatusServerRpc(PlayerStatus.State.CrouchMove);
                 } else {
                     speed = walkSpeed;
-                    playerStatus.state = PlayerStatus.State.Walk;
+                    UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
 
             } else if (Input.GetKey(KeyCode.LeftControl)) {
-                playerStatus.state = PlayerStatus.State.Crouch;
+                UpdateStatusServerRpc(PlayerStatus.State.Crouch);
             } else
-                playerStatus.state = PlayerStatus.State.Idlee;
+                UpdateStatusServerRpc(PlayerStatus.State.Idlee);
 
             //JUMP
             if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
-                playerStatus.state = PlayerStatus.State.Jump;
+                UpdateStatusServerRpc(PlayerStatus.State.Jump);
             }
 
             velocity.x = speed * direction.x;
@@ -164,22 +165,20 @@ public class PlayerManager : NetworkBehaviour {
             if (direction.x != 0.0f || direction.z != 0.0f)
                 speed = walkSpeed;
             if (velocity.y > 0)
-                playerStatus.state = PlayerStatus.State.Rises;
+                UpdateStatusServerRpc(PlayerStatus.State.Rises);
             else
-                playerStatus.state = PlayerStatus.State.Falls;
+                UpdateStatusServerRpc(PlayerStatus.State.Falls);
         }
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;
         controller.Move(distance);
 
-        UpdateStatusServerRpc(playerStatus.state);
-        UpdateClientServerRpc(transform.position, transform.eulerAngles);
 
-        if (playerPrevState != playerStatus.state) {
-            updateControllerHeight();
-            refreshCameraPosition();
-           
-        }
+
+        // if (playerPrevState != playerStatus.state) {
+        //     updateControllerHeight();
+        //     refreshCameraPosition();
+        // }
     }
 
 

@@ -17,7 +17,8 @@ public class AnimationController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (playerStatus.state)
+        PlayerStatus.State state = playerStatus.state.Value;
+        switch (state)
         {
             case PlayerStatus.State.Idlee:
                 {
@@ -48,4 +49,6 @@ public class AnimationController : NetworkBehaviour
 
         }
     }
+
+
 }
