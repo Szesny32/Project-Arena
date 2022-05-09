@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class AnimationController : NetworkBehaviour
 {
     public Animator animator;
     private PlayerStatus playerStatus;
