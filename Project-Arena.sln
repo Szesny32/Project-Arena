@@ -1,15 +1,24 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{75ce3cef-2856-bbc3-86fe-4651bfadafa8}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{EF3CCE75-5628-C3BB-86FE-4651BFADAFA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientNetworkTransform", "ClientNetworkTransform.csproj", "{CFEF180F-22A3-4428-2ECE-627ACBA47D9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75ce3cef-2856-bbc3-86fe-4651bfadafa8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75ce3cef-2856-bbc3-86fe-4651bfadafa8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3CCE75-5628-C3BB-86FE-4651BFADAFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3CCE75-5628-C3BB-86FE-4651BFADAFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3CCE75-5628-C3BB-86FE-4651BFADAFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3CCE75-5628-C3BB-86FE-4651BFADAFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEF180F-22A3-4428-2ECE-627ACBA47D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEF180F-22A3-4428-2ECE-627ACBA47D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEF180F-22A3-4428-2ECE-627ACBA47D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEF180F-22A3-4428-2ECE-627ACBA47D9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
