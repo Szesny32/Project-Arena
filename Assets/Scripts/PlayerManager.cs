@@ -46,7 +46,6 @@ public class PlayerManager : NetworkBehaviour {
         setController(0.55f, 0.2f);
     }
 
-<<<<<<< HEAD
     public float getDirectionMagnitude()
     {
         return Mathf.Clamp01(direction.magnitude);
@@ -55,10 +54,7 @@ public class PlayerManager : NetworkBehaviour {
     void Update()
     {
         if(debug)
-=======
-    void Update() {
-        if (debug)
->>>>>>> 533c51980f3720c90ddfbaca863c3f224f3fe300
+
             shootingTest();
 
         if (IsLocalPlayer) {
@@ -158,22 +154,16 @@ public class PlayerManager : NetworkBehaviour {
                     speed = walkSpeed;
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
-<<<<<<< HEAD
-            else if(Input.GetKey(KeyCode.LeftControl)){
-                playerStatus.state = PlayerStatus.State.Crouch;
-            }
-            //wydaje nam sie ze tu trzeba dopisac state AimIdle, kiedy PPM zostanie wciesniety
-            else
-                playerStatus.state = PlayerStatus.State.Idlee;
+
+   
             
-=======
+
 
             } else if (Input.GetKey(KeyCode.LeftControl)) {
                 playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);
             } else
                 playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
 
->>>>>>> 533c51980f3720c90ddfbaca863c3f224f3fe300
             //JUMP
             if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);

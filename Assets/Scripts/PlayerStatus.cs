@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-<<<<<<< HEAD
-public class PlayerStatus : MonoBehaviour
+
+public class PlayerStatus : NetworkBehaviour
 {
     public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchAim, CrouchMove, WalkingAim, IdleAim};
-    
-    public State state; 
-=======
-public class PlayerStatus : NetworkBehaviour {
-    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchMove};
     public NetworkVariable<State> state = new NetworkVariable<State>();
->>>>>>> 533c51980f3720c90ddfbaca863c3f224f3fe300
+    
+
     [SerializeField] private bool debug = false;
 
 
