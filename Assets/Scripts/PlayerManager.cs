@@ -36,6 +36,11 @@ public class PlayerManager : MonoBehaviour
         setController(0.55f, 0.2f);
     }
 
+    public float getDirectionMagnitude()
+    {
+        return Mathf.Clamp01(direction.magnitude);
+    }
+
     void Update()
     {
         if(debug)
@@ -137,6 +142,7 @@ void shootingTest()
             else if(Input.GetKey(KeyCode.LeftControl)){
                 playerStatus.state = PlayerStatus.State.Crouch;
             }
+            //wydaje nam sie ze tu trzeba dopisac state AimIdle, kiedy PPM zostanie wciesniety
             else
                 playerStatus.state = PlayerStatus.State.Idlee;
             
