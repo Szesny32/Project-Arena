@@ -20,6 +20,7 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private float gravityAcceleration = -9.81f;
     [SerializeField] private NetworkVariable<Vector3> networkPositionDirection = new NetworkVariable<Vector3>();
     [SerializeField] private NetworkVariable<Vector3> networkRotationDirection = new NetworkVariable<Vector3>();
+    [SerializeField] private NetworkVariable<float> networkDirectionMagnitude = new NetworkVariable<float>();
    
 
     private CharacterController controller;
@@ -46,9 +47,10 @@ public class PlayerManager : NetworkBehaviour {
         setController(0.55f, 0.2f);
     }
 
+
     public float getDirectionMagnitude()
     {
-        return Mathf.Clamp01(direction.magnitude);
+        return networkDirectionMagnitude.Value;
     }
 
     void Update()
@@ -62,6 +64,7 @@ public class PlayerManager : NetworkBehaviour {
             mouse();
             movement();
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
+            UpdateDirectionMagnitudeServerRpc(Mathf.Clamp01(direction.magnitude));
         }
     }
 
@@ -110,6 +113,13 @@ public class PlayerManager : NetworkBehaviour {
     public void UpdateStatusServerRpc(PlayerStatus.State newState) {
 
         playerStatus.state.Value = newState;
+
+    }
+
+    [ServerRpc]
+    public void UpdateDirectionMagnitudeServerRpc(float newDirectionMagnitude) {
+
+        networkDirectionMagnitude.Value = newDirectionMagnitude;
 
     }
 
