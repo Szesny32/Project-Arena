@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HP_Manager : MonoBehaviour
 {
-    private float HP = 100.0f;
+    public Slider slider;
     private float MAXHP = 100.0f;
+    private float HP;
 
     void Start()
     {
+        HP = MAXHP;
+        slider.value = HP;
     }
 
     // Update is called once per frame
