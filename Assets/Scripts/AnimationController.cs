@@ -5,72 +5,84 @@ using UnityEngine;
 
 public class AnimationController : NetworkBehaviour
 {
-    public Animator animator;
+    private Animator animator;
     private PlayerStatus playerStatus;
     private PlayerManager playerManager;
+    
+    private float InputMagnitude;
+    private bool IsMoving;
+    private bool isIdleAiming;
+    private bool isWalkingAiming;
+    private bool isCrouching;
+    private bool isCrouchingAiming;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
         playerStatus = GetComponent<PlayerStatus>();
+        animator = transform.Find("Model").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerStatus.State state = playerStatus.state.Value;
+
+        IsMoving = false; 
+        isIdleAiming = false;
+        isWalkingAiming = false;
+        isCrouching = false;
+        isCrouchingAiming = false;
+
         switch (state)
         {
             case PlayerStatus.State.Idlee:
                 {
-                    Debug.Log($"{playerStatus.state.Value} {playerManager.getDirectionMagnitude()}");
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude(), 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude();
                 }
                 break;
 
             case PlayerStatus.State.Walk:
                 {
-                    Debug.Log($"{playerStatus.state.Value} {playerManager.getDirectionMagnitude()}");
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude() / 2f, 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude()/2f;
                 }
 
                 break;
 
             case PlayerStatus.State.Run:
                 {
-                    Debug.Log($"{playerStatus.state.Value} {playerManager.getDirectionMagnitude()}");
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude(), 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude();
                 }
                 break;
 
             case PlayerStatus.State.IdleAim:
                 {
-                    Debug.Log($"{playerStatus.state.Value} {playerManager.getDirectionMagnitude()}");
-                    animator.SetBool("isIdleAiming", true); //potem gdzies w kodzie musi sie zmieniac na false po puszczeniu ppm
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude(), 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude();
+                    isIdleAiming = true;
                 }
                 break;
 
             case PlayerStatus.State.WalkingAim:
                 {
-                    Debug.Log(playerStatus.state.Value);
-                    animator.SetBool("isWalkingAiming", true);
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude() / 2f, 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude()/2f;
+                    isWalkingAiming = true;
                 }
                 break;
 
             case PlayerStatus.State.Crouch:
                 {
-                    Debug.Log(playerStatus.state.Value);
-                    animator.SetBool("isCrouching", true);
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude(), 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude();
+                    isCrouching = true;
                 }
                 break;
             case PlayerStatus.State.CrouchAim:
                 {
-                    Debug.Log(playerStatus.state.Value);
-                    animator.SetBool("isCrouchingAiming", true);
-                    animator.SetFloat("Input Magnitude", playerManager.getDirectionMagnitude() / 2f, 0.05f, Time.deltaTime);
+                    InputMagnitude = playerManager.getDirectionMagnitude()/2f;
+                    isCrouchingAiming = true;      
                 }
                 break;
 
@@ -79,6 +91,12 @@ public class AnimationController : NetworkBehaviour
                 break;
 
         }
+        Debug.Log(playerStatus.state.Value);
+        animator.SetFloat("Input Magnitude", InputMagnitude, 0.05f, Time.deltaTime);
+        animator.SetBool("isIdleAiming", isIdleAiming);
+        animator.SetBool("isWalkingAiming", isWalkingAiming);
+        animator.SetBool("isCrouching", isCrouching);
+        animator.SetBool("isCrouchingAiming", isCrouchingAiming);
     }
 
 

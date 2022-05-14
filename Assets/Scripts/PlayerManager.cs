@@ -153,26 +153,35 @@ public class PlayerManager : NetworkBehaviour {
 
         if (controller.isGrounded) {//WASD
 
-            if (direction.x != 0.0f || direction.z != 0.0f) {
-                if (Input.GetKey(KeyCode.LeftShift)) {
+            if (direction.x != 0.0f || direction.z != 0.0f) 
+            {
+                if (Input.GetKey(KeyCode.LeftShift)) 
+                {
                     speed = runSpeed;
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Run);
-                } else if (Input.GetKey(KeyCode.LeftControl)) {
+                }
+                else if (Input.GetKey(KeyCode.LeftControl)) 
+                {
                     speed = crouchSpeed;
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchMove);
-                } else {
+                } 
+                else 
+                {
                     speed = walkSpeed;
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
-
-   
-            
-
-
-            } else if (Input.GetKey(KeyCode.LeftControl)) {
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);
-            } else
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
+            } 
+            else
+            {
+                if (Input.GetKey(KeyCode.LeftControl)) 
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);
+                else if(Input.GetMouseButton(1))
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
+                else
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
+                
+            }
+               
 
             //JUMP
             if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {

@@ -945,7 +945,7 @@ Animator:
   m_GameObject: {fileID: 3506804646838411666}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa1a02fa554697c4f8919443e02bf8e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9261331fb6bae94290d04b047216960, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1084,8 +1084,8 @@ MonoBehaviour:
     m_InternalValue: {x: 0, y: 0, z: 0}
   networkRotationDirection:
     m_InternalValue: {x: 0, y: 0, z: 0}
-  networkPlayerStatus:
-    m_InternalValue: 1
+  networkDirectionMagnitude:
+    m_InternalValue: 0
 --- !u!114 &3538337171820132998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,7 +1098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a98ecccc2224bd4f8a8f649b050df76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  state:
+    m_InternalValue: 0
   debug: 1
 --- !u!114 &3538337171820132997
 MonoBehaviour:
@@ -1112,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c77843ac8e27dd43bbb8a84c6b0225c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!114 &3538337171820132996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656c96986c27bc342abf7f618bae8f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6799373163898275153}
 --- !u!114 &1196707574023812039
 MonoBehaviour:
   m_ObjectHideFlags: 0
