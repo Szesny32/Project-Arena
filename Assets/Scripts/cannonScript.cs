@@ -36,7 +36,7 @@ public class cannonScript : MonoBehaviour
                 Debug.Log(hit.transform.gameObject.name);
                 HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
                 if(HP)
-                    HP.takeDamage(25.0f);
+                    HP.takeDamageServerRpc(25.0f);
                 }  
         }
     }
