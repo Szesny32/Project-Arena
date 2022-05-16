@@ -65,6 +65,7 @@ public class PlayerManager : NetworkBehaviour {
             movement();
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
             UpdateDirectionMagnitudeServerRpc(Mathf.Clamp01(direction.magnitude));
+            refreshCameraPosition();
         }
     }
 
@@ -93,8 +94,8 @@ public class PlayerManager : NetworkBehaviour {
     private void refreshCameraPosition() {
         if (model != null) {
             Vector3 headPoint = model.transform.Find("Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
-            Vector3 position = headPoint + new Vector3(0.0f, 0.1f, 0.12f) - transform.position;
-            playerCamera.transform.localPosition = position;
+            Vector3 position = headPoint + new Vector3(0.0f, 0.1f, 0.12f);
+            playerCamera.transform.position = position;
             //playerCamera.transform.localRotation = Quaternion.identity;
             //cameraRotation = Vector3.zero;
         }
@@ -168,15 +169,24 @@ public class PlayerManager : NetworkBehaviour {
                 else 
                 {
                     speed = walkSpeed;
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
+
+                    if(Input.GetMouseButton(1))
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkingAim);
+                    else
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
             } 
             else
             {
-                if (Input.GetKey(KeyCode.LeftControl)) 
+                if(Input.GetMouseButton(1))
+                { 
+                    if (Input.GetKey(KeyCode.LeftControl)) 
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchAim);
+                    else
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
+                }    
+                else if (Input.GetKey(KeyCode.LeftControl)) 
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);
-                else if(Input.GetMouseButton(1))
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
                 else
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
                 
