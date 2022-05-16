@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637883301240000000
-    m_Hash: 2066650667
+      ticks: 637883350840684247
+    m_Hash: 2197365771
   m_LockFileStatus:
     m_FilePath: C:/Users/Szesny/Desktop/Project-Arena/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637883301240000000
-    m_Hash: 3449391923
+      ticks: 637883350840684247
+    m_Hash: 859603823
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
