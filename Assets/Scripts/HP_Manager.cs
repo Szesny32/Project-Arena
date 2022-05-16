@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class HP_Manager : MonoBehaviour
+public class HP_Manager : NetworkBehaviour
 {
     public Slider slider;
     private float MAXHP = 100.0f;
-    private float HP;
+    [SerializeField] private NetworkVariable<float> HP = new NetworkVariable<float>();
 
     void Start()
     {
-        HP = MAXHP;
-        slider.value = HP;
+        HP.Value = MAXHP;
+        slider.value = HP.Value;
     }
 
     // Update is called once per frame
@@ -22,11 +23,13 @@ public class HP_Manager : MonoBehaviour
 
     public float getHP()
     {
-        return HP;
+        return HP.Value;
     }
-    public void takeDamage(float DMG)
+
+    [ServerRpc]
+    public void takeDamageServerRpc(float DMG)
     {
-        HP-=DMG;
-        Debug.Log(this.name+" has taken: "+DMG+" HP! Now has HP:"+HP);
+        HP.Value-=DMG;
+        Debug.Log(this.name+" has taken: "+DMG+" HP! Now has HP:"+HP.Value);
     }
 }
