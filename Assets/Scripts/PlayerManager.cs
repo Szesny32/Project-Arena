@@ -7,7 +7,7 @@ public class PlayerManager : NetworkBehaviour {
     //[SerializeField] private GameObject modelPrefab;
     [SerializeField] private float mouseSensitivity = 200.0f;
     public GameObject model;
-    private GameObject playerCamera;
+    [SerializeField] private  GameObject playerCamera;
     [SerializeField] private bool debug = false;
     private Vector3 cameraRotation = Vector3.zero;
     [SerializeField] private float cameraMinRange = -30.0f;
@@ -32,7 +32,7 @@ public class PlayerManager : NetworkBehaviour {
      
     void Start() {
         // setModel(modelPrefab);
-        playerCamera = transform.Find("Camera").gameObject;
+        //playerCamera = transform.Find("Camera").gameObject;
 
         if (!IsLocalPlayer) {
             playerCamera.GetComponent<Camera>().enabled = false;
@@ -45,6 +45,14 @@ public class PlayerManager : NetworkBehaviour {
         controller = GetComponent<CharacterController>(); //shift alt down
         playerStatus = GetComponent<PlayerStatus>();
         setController(0.55f, 0.2f);
+
+
+        model.transform.Find("Robot_Soldier_Head").GetComponent<Renderer>().enabled = false;
+        //model.transform.Find("Robot_Soldier_Body").GetComponent<Renderer>().enabled = false;
+       // model.transform.Find("Robot_Soldier_Feet").GetComponent<Renderer>().enabled = false;
+        //model.transform.Find("Robot_Soldier_Legs2").GetComponent<Renderer>().enabled = false;
+        
+        
     }
 
 
@@ -55,11 +63,10 @@ public class PlayerManager : NetworkBehaviour {
 
     void Update()
     {
-        if(debug)
-
-            shootingTest();
+   
 
         if (IsLocalPlayer) {
+            shootingTest();
             gravity();
             mouse();
             movement();
@@ -69,33 +76,43 @@ public class PlayerManager : NetworkBehaviour {
         }
     }
 
-    void shootingTest() {
+
+
+
+    void shootingTest() 
+    {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * 20.0f, Color.red);
         RaycastHit hit;
-        if (Input.GetMouseButtonDown(0)) {
-            if (Physics.Raycast(ray, out hit)) {
-                Debug.Log(hit.transform.gameObject);
-                HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
-                if (HP)
-                    HP.takeDamageServerRpc(25.0f);
+        if (Input.GetMouseButton(0)) {
+            if (Physics.Raycast(ray, out hit)) 
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                HUD_Manager Health = hit.transform.GetComponent<HUD_Manager>();
+                if(Health)
+                    Health.takeDamageServerRpc(1f);
             }
         }
-
     }
 
-    private void setModel(GameObject prefab) {
-        if (prefab != null) {
-            model = Instantiate(prefab, this.transform);
-            model.name = "Model";
-            model.transform.localPosition = Vector3.zero;
-        }
-    }
+
+
+    // private void setModel(GameObject prefab) {
+    //     if (prefab != null) {
+    //         model = Instantiate(prefab, this.transform);
+    //         model.name = "Model";
+    //         model.transform.localPosition = Vector3.zero;
+    //     }
+    // }
+
+
+
     private void refreshCameraPosition() {
         if (model != null) {
             Vector3 headPoint = model.transform.Find("Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
-            Vector3 position = headPoint + new Vector3(0.0f, 0.1f, 0.12f);
+            Vector3 position = headPoint;
             playerCamera.transform.position = position;
+
             //playerCamera.transform.localRotation = Quaternion.identity;
             //cameraRotation = Vector3.zero;
         }
@@ -109,13 +126,6 @@ public class PlayerManager : NetworkBehaviour {
     
     }
     
-    
-    [ServerRpc]
-    public void UpdateStatusServerRpc(PlayerStatus.State newState) {
-
-        playerStatus.state.Value = newState;
-
-    }
 
     [ServerRpc]
     public void UpdateDirectionMagnitudeServerRpc(float newDirectionMagnitude) {

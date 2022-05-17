@@ -15,18 +15,16 @@ public class PlayerStatus : NetworkBehaviour
 
     void Start()
     {   
-        if (!IsLocalPlayer) {
-            return;
-        }
-        state.Value = State.Run;
+        if (!IsLocalPlayer) return;
+        
+        UpdateStatusServerRpc(State.Run);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(debug)
-            Debug.Log(state);
+         if (IsLocalPlayer && debug)
+            Debug.Log(state.Value);
     }
 
     

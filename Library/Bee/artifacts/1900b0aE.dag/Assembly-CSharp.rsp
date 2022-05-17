@@ -357,6 +357,7 @@
 "Assets/Scripts/Crosshair.cs"
 "Assets/Scripts/GameManagerScript.cs"
 "Assets/Scripts/HP_Manager.cs"
+"Assets/Scripts/HUD_Manager.cs"
 "Assets/Scripts/Login.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PlayerManager.cs"

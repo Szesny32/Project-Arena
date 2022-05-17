@@ -15,30 +15,30 @@ public class cannonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timmer-=Time.deltaTime;
-        if(timmer<=0.0)
-            shoot();
+        //timmer-=Time.deltaTime;
+        //if(timmer<=0.0)
+            //shoot();
 
 
     }
 
 
-    void shoot()
-    {
-        timmer=reloadTime;   
-        Ray ray = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction*5.0f, Color.red, 0.2f);   
-        RaycastHit hit;
+    // void shoot()
+    // {
+    //     timmer=reloadTime;   
+    //     Ray ray = new Ray(transform.position, transform.forward);
+    //     Debug.DrawRay(ray.origin, ray.direction*5.0f, Color.red, 0.2f);   
+    //     RaycastHit hit;
 
-        {
-            if(Physics.Raycast(ray, out hit))
-            {
-                Debug.Log(hit.transform.gameObject.name);
-                HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
-                if(HP)
-                    HP.takeDamageServerRpc(25.0f);
-                }  
-        }
-    }
+    //     {
+    //         if(Physics.Raycast(ray, out hit))
+    //         {
+    //             Debug.Log(hit.transform.gameObject.name);
+    //             HP_Manager HP = hit.transform.gameObject.GetComponent<HP_Manager>();
+    //             if(HP)
+    //                 HP.takeDamageServerRpc(25.0f);
+    //             }  
+    //     }
+    // }
 
 }

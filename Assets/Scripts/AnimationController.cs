@@ -91,7 +91,6 @@ public class AnimationController : NetworkBehaviour
                 break;
 
         }
-        Debug.Log(playerStatus.state.Value);
         animator.SetFloat("Input Magnitude", InputMagnitude, 0.05f, Time.deltaTime);
         animator.SetBool("isIdleAiming", isIdleAiming);
         animator.SetBool("isWalkingAiming", isWalkingAiming);
