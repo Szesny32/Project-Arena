@@ -13,8 +13,8 @@ public class HUD_Manager : NetworkBehaviour
 
 
     private Image dmgTakenEffect;
-    private float effectTime = 2.0f;
-    private Color effectColor = new Color(1f,0f,0f,0.1f);
+    private float effectTime = 0.25f;
+    private Color effectColor = new Color(1f,0f,0f,0.5f);
     public NetworkVariable<bool> playerReceivedDmg = new NetworkVariable<bool>();
 
     void Start()
@@ -25,9 +25,7 @@ public class HUD_Manager : NetworkBehaviour
         setHPServerRpc(MAXHP);
         slider = GameObject.Find("Canvas/HealthBar").GetComponent<Slider>();
         dmgTakenEffect =  GameObject.Find("Canvas/Image").GetComponent<Image>();   
-            Debug.Log(slider);
-            Debug.Log(dmgTakenEffect);
-        slider.value = MAXHP;
+        slider.value = MAXHP; //= HP.Value - not working!
         setPlayerReceivedDmgServerRpc(false);
     }
 
@@ -44,8 +42,8 @@ public class HUD_Manager : NetworkBehaviour
             }
             else
             {
-                Debug.Log(dmgTakenEffect);
-                dmgTakenEffect.color = Color.Lerp(dmgTakenEffect.color, new Color(0f,0f,0f,0.0f),effectTime*Time.deltaTime);
+                float A= (HP.Value>50f) ? 0f :  0.5f * (1f - (HP.Value / MAXHP) ) - 0.25f;
+                dmgTakenEffect.color = Color.Lerp(dmgTakenEffect.color, new Color(1f ,0f,0f, A), (1f/effectTime)*Time.deltaTime);
             }
         }
     }
@@ -59,8 +57,10 @@ public class HUD_Manager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void takeDamageServerRpc(float DMG)
     {  
-        Debug.Log($"Odebrano {DMG} HP");
-        HP.Value -= DMG;
+        if(DMG > HP.Value)
+            HP.Value = 0f;
+        else
+            HP.Value -= DMG;
         playerReceivedDmg.Value = true;
     }
 
