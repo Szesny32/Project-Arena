@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Login.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Register.cs" />
+     <Compile Include="Assets\Scripts\AudioController.cs" />
      <Compile Include="Assets\Scripts\AnimationController.cs" />
      <Compile Include="Assets\Scripts\HUD_Manager.cs" />
  <Reference Include="UnityEngine">
