@@ -22,8 +22,9 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private NetworkVariable<Vector3> networkRotationDirection = new NetworkVariable<Vector3>();
     [SerializeField] private NetworkVariable<float> networkDirectionMagnitude = new NetworkVariable<float>();
    
+    [SerializeField] private LayerMask layerMask;
 
-    private CharacterController controller;
+   private CharacterController controller;
     private PlayerStatus playerStatus;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
@@ -86,20 +87,19 @@ public class PlayerManager : NetworkBehaviour {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * range, Color.red);
 
-        RaycastHit [] hits;
-        
-        if (Input.GetMouseButtonDown(0)) {
-            hits = Physics.RaycastAll(playerCamera.transform.position, playerCamera.transform.forward, range);
-            for(int i =0; i < hits.Length; i++)
-            {
-                //Debug.Log($"{i} : {hits[i].transform.gameObject.name}");
-                BodyPart bodyPart = hits[i].transform.GetComponent<BodyPart>();
-                if(bodyPart)
-                {
-                    Debug.Log($"{Time.frameCount} : {i} : {hits[i].transform.gameObject.name}");
+        RaycastHit hit;
 
+
+
+
+        if (Input.GetMouseButtonDown(0)) {
+         if(Physics.Raycast (ray, out hit, range, layerMask))
+            {
+               // Debug.Log($"{hit.transform.gameObject}");
+                BodyPart bodyPart = hit.transform.GetComponent<BodyPart>();
+                if(bodyPart)
                     bodyPart.inflictDamage(damage);
-                }
+                
             }
         }
     }

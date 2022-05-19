@@ -11,7 +11,8 @@ public class BodyPart : MonoBehaviour
     public void inflictDamage(float DMG)
     {
         Health.takeDamageServerRpc(DMG * factor);
-        Debug.Log($"{Health.transform.name} : HP - {DMG * factor}");
+        Debug.Log($"{Time.frameCount} : {transform.gameObject.name} : HP - {DMG * factor}");
+
     }
 
 }
