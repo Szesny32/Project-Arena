@@ -81,19 +81,29 @@ public class PlayerManager : NetworkBehaviour {
 
     void shootingTest() 
     {
+        float range = 20f;
+        float damage = 10f;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 20.0f, Color.red);
-        RaycastHit hit;
-        if (Input.GetMouseButton(0)) {
-            if (Physics.Raycast(ray, out hit)) 
+        Debug.DrawRay(ray.origin, ray.direction * range, Color.red);
+
+        RaycastHit [] hits;
+        
+        if (Input.GetMouseButtonDown(0)) {
+            hits = Physics.RaycastAll(playerCamera.transform.position, playerCamera.transform.forward, range);
+            for(int i =0; i < hits.Length; i++)
             {
-                Debug.Log(hit.transform.gameObject.name);
-                HUD_Manager Health = hit.transform.GetComponent<HUD_Manager>();
-                if(Health)
-                    Health.takeDamageServerRpc(1f);
+                //Debug.Log($"{i} : {hits[i].transform.gameObject.name}");
+                BodyPart bodyPart = hits[i].transform.GetComponent<BodyPart>();
+                if(bodyPart)
+                {
+                    Debug.Log($"{Time.frameCount} : {i} : {hits[i].transform.gameObject.name}");
+
+                    bodyPart.inflictDamage(damage);
+                }
             }
         }
     }
+    
 
 
 
