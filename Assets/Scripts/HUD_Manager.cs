@@ -51,7 +51,7 @@ public class HUD_Manager : NetworkBehaviour
     {
         if (IsLocalPlayer)
         {
-            if(playerReceivedDmg.Value)
+            if(playerReceivedDmg.Value )
             {
                 if(SHIELD.Value>0)
                     dmgTakenEffect.color = effectColor_SHIELD;
@@ -61,12 +61,12 @@ public class HUD_Manager : NetworkBehaviour
                 sliderHP.value = HP.Value;
                 sliderSHIELD.value = SHIELD.Value;
             }
-            else
+            else if(HP.Value>0f)
             {
                 float A= (HP.Value>50f) ? 0f :  0.5f * (1f - (HP.Value / MAXHP) ) - 0.25f;
                 dmgTakenEffect.color = Color.Lerp(dmgTakenEffect.color, new Color(1f ,0f,0f, A), (1f/effectTime)*Time.deltaTime);
                 
-               ShieldRegenServerRpc();
+                ShieldRegenServerRpc();
             }
 
 
@@ -84,6 +84,8 @@ public class HUD_Manager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void takeDamageServerRpc(float DMG)
     {  
+        if(HP.Value==0f)
+            return;
         if(SHIELD.Value > DMG)
         {
             SHIELD.Value-=DMG;
