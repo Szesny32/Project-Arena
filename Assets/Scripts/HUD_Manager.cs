@@ -7,27 +7,43 @@ using Unity.Netcode;
 
 public class HUD_Manager : NetworkBehaviour
 {
-    public Slider slider;
-    private float MAXHP = 100.0f;
-    public NetworkVariable<float> HP = new NetworkVariable<float>();
-
 
     private Image dmgTakenEffect;
     private float effectTime = 0.25f;
-    private Color effectColor = new Color(1f,0f,0f,0.5f);
     public NetworkVariable<bool> playerReceivedDmg = new NetworkVariable<bool>();
+
+
+    public Slider sliderHP;
+    public NetworkVariable<float> HP = new NetworkVariable<float>();
+    private float MAXHP = 100.0f;
+    private Color effectColor_HP = new Color(1f,0f,0f,0.5f);
+
+   
+    
+    public Slider sliderSHIELD;
+    public NetworkVariable<float> SHIELD = new NetworkVariable<float>();
+    private Color effectColor_SHIELD = new Color(0.0859375f, 0.82421875f, 0.94140625f, 0.5f);
+    private float SHIELD_Regeneration = 20f; // (20/s)
+    private float MAXSHIELD = 100.0f;
+
+    
 
     void Start()
     {
         if (!IsLocalPlayer) {
             return;
        }
-        setHPServerRpc(MAXHP);
-        slider = GameObject.Find("PlayerHUDCanvas/HealthBar").GetComponent<Slider>();
         dmgTakenEffect =  GameObject.Find("PlayerHUDCanvas/Image").GetComponent<Image>();   
-        slider.value = MAXHP; //= HP.Value - not working!
-        setPlayerReceivedDmgServerRpc(false);
 
+        setHPServerRpc(MAXHP);
+        sliderHP = GameObject.Find("PlayerHUDCanvas/HealthBar").GetComponent<Slider>();
+        sliderHP.value = MAXHP; //= HP.Value - not working!
+
+        setSHIELDServerRpc(MAXSHIELD);
+        sliderSHIELD = GameObject.Find("PlayerHUDCanvas/ShieldBar").GetComponent<Slider>();
+        sliderSHIELD.value = MAXSHIELD;
+        
+        setPlayerReceivedDmgServerRpc(false);
     }
 
     // Update is called once per frame
@@ -37,15 +53,25 @@ public class HUD_Manager : NetworkBehaviour
         {
             if(playerReceivedDmg.Value)
             {
-                dmgTakenEffect.color = effectColor;
+                if(SHIELD.Value>0)
+                    dmgTakenEffect.color = effectColor_SHIELD;
+                else
+                    dmgTakenEffect.color = effectColor_HP;
                 setPlayerReceivedDmgServerRpc(false);
-                slider.value = HP.Value;
+                sliderHP.value = HP.Value;
+                sliderSHIELD.value = SHIELD.Value;
             }
             else
             {
                 float A= (HP.Value>50f) ? 0f :  0.5f * (1f - (HP.Value / MAXHP) ) - 0.25f;
                 dmgTakenEffect.color = Color.Lerp(dmgTakenEffect.color, new Color(1f ,0f,0f, A), (1f/effectTime)*Time.deltaTime);
+                
+               ShieldRegenServerRpc();
             }
+
+
+
+
         }
     }
 
@@ -58,10 +84,21 @@ public class HUD_Manager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void takeDamageServerRpc(float DMG)
     {  
-        if(DMG > HP.Value)
-            HP.Value = 0f;
+        if(SHIELD.Value > DMG)
+        {
+            SHIELD.Value-=DMG;
+        }
         else
-            HP.Value -= DMG;
+        {
+            float x = DMG - SHIELD.Value;
+            SHIELD.Value = 0.0f;
+
+            if(x > HP.Value)
+                HP.Value = 0f;
+            else
+                HP.Value -= DMG;
+        }
+
         playerReceivedDmg.Value = true;
     }
 
@@ -72,9 +109,22 @@ public class HUD_Manager : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void setSHIELDServerRpc(float newSHIELD)
+    {  
+        SHIELD.Value = newSHIELD;
+    }
+
+    [ServerRpc]
     public void setPlayerReceivedDmgServerRpc(bool receivedDmg)
     {  
         playerReceivedDmg.Value = receivedDmg;
+    }
+
+    [ServerRpc]
+    private void ShieldRegenServerRpc()
+    {  
+        SHIELD.Value = Mathf.Clamp(SHIELD.Value+ SHIELD_Regeneration * Time.deltaTime, 0f, MAXSHIELD);
+        sliderSHIELD.value = SHIELD.Value;
     }
 
 
