@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerStatus : NetworkBehaviour
 {
-    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchAim, CrouchMove, WalkingAim, IdleAim};
+    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchAim, CrouchMove, WalkingAim, IdleAim, Dying};
     public NetworkVariable<State> state = new NetworkVariable<State>();
     
 

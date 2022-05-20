@@ -15,7 +15,8 @@ public class AnimationController : NetworkBehaviour
     private bool isWalkingAiming;
     private bool isCrouching;
     private bool isCrouchingAiming;
-
+    private bool isJumping;
+    private bool isAlive;
 
 
 
@@ -37,6 +38,8 @@ public class AnimationController : NetworkBehaviour
         isWalkingAiming = false;
         isCrouching = false;
         isCrouchingAiming = false;
+        isJumping = false;
+        isAlive = true;
 
         switch (state)
         {
@@ -85,7 +88,18 @@ public class AnimationController : NetworkBehaviour
                     isCrouchingAiming = true;      
                 }
                 break;
-
+            case PlayerStatus.State.Jump:
+                {
+                    InputMagnitude = playerManager.getDirectionMagnitude();
+                    isJumping = true;
+                }
+                break;
+            case PlayerStatus.State.Dying:
+                {
+                    InputMagnitude = playerManager.getDirectionMagnitude();
+                    isAlive = false;
+                }
+                break;
             default:
                 // Debug.Log("Custom ERROR "+playerObject.name+" state undefined");
                 break;
@@ -96,6 +110,9 @@ public class AnimationController : NetworkBehaviour
         animator.SetBool("isWalkingAiming", isWalkingAiming);
         animator.SetBool("isCrouching", isCrouching);
         animator.SetBool("isCrouchingAiming", isCrouchingAiming);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isAlive", isAlive);
+
     }
 
 
