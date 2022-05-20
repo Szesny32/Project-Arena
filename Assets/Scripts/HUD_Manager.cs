@@ -23,8 +23,8 @@ public class HUD_Manager : NetworkBehaviour
             return;
        }
         setHPServerRpc(MAXHP);
-        slider = GameObject.Find("Canvas/HealthBar").GetComponent<Slider>();
-        dmgTakenEffect =  GameObject.Find("Canvas/Image").GetComponent<Image>();   
+        slider = GameObject.Find("PlayerHUDCanvas/HealthBar").GetComponent<Slider>();
+        dmgTakenEffect =  GameObject.Find("PlayerHUDCanvas/Image").GetComponent<Image>();   
         slider.value = MAXHP; //= HP.Value - not working!
         setPlayerReceivedDmgServerRpc(false);
     }
