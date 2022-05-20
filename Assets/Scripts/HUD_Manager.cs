@@ -27,6 +27,7 @@ public class HUD_Manager : NetworkBehaviour
         dmgTakenEffect =  GameObject.Find("PlayerHUDCanvas/Image").GetComponent<Image>();   
         slider.value = MAXHP; //= HP.Value - not working!
         setPlayerReceivedDmgServerRpc(false);
+
     }
 
     // Update is called once per frame

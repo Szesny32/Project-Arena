@@ -29,7 +29,8 @@ public class PlayerManager : NetworkBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private PlayerStatus.State playerPrevState;
-
+    private HUD_Manager Health;
+    private float timer = 0.0f;
      
     void Start() {
         // setModel(modelPrefab);
@@ -52,8 +53,9 @@ public class PlayerManager : NetworkBehaviour {
         //model.transform.Find("Robot_Soldier_Body").GetComponent<Renderer>().enabled = false;
        // model.transform.Find("Robot_Soldier_Feet").GetComponent<Renderer>().enabled = false;
         //model.transform.Find("Robot_Soldier_Legs2").GetComponent<Renderer>().enabled = false;
+        Health = GetComponent<HUD_Manager>(); 
         
-        
+
     }
 
 
@@ -64,13 +66,22 @@ public class PlayerManager : NetworkBehaviour {
 
     void Update()
     {
-   
-
+        timer+=Time.deltaTime;
+        if(timer < 0.5f)
+            return;
+            
         if (IsLocalPlayer) {
-            shootingTest();
+
             gravity();
-            mouse();
-            movement();
+            if(Health.HP.Value!=0f)
+            {
+                shootingTest();
+                mouse();
+                movement();
+            }
+            else
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Dying);
+              
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
             UpdateDirectionMagnitudeServerRpc(Mathf.Clamp01(direction.magnitude));
             refreshCameraPosition();
