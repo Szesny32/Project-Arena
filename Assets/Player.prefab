@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 1196707574023812039}
   - component: {fileID: -1012262095633136028}
   - component: {fileID: 2315062110426951756}
+  - component: {fileID: 8783825028213540855}
   - component: {fileID: 7682442846546268749}
   - component: {fileID: 1985369937179763581}
   m_Layer: 2
@@ -1375,11 +1376,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412053cab2790324cb2983dab6531883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  HP:
-    m_InternalValue: 0
   playerReceivedDmg:
     m_InternalValue: 0
+  sliderHP: {fileID: 0}
+  HP:
+    m_InternalValue: 0
+  sliderSHIELD: {fileID: 0}
+  SHIELD:
+    m_InternalValue: 0
+--- !u!114 &8783825028213540855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538337171820132995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855c55a270c6d154b9aedfb7f70da39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!81 &7682442846546268749
 AudioListener:
   m_ObjectHideFlags: 0

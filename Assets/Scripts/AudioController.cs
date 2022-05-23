@@ -7,10 +7,11 @@ public class AudioController : NetworkBehaviour
 {
     private PlayerStatus playerStatus;
     private PlayerManager playerManager;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private AudioClip footstep;
     private AudioClip jump;
     private AudioClip run;
+    private AudioListener audioListener;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,11 @@ public class AudioController : NetworkBehaviour
         footstep = Resources.Load<AudioClip>("Classic Footstep SFX/Floor/Floor_step10");
         run = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_running_loop0");
         jump = Resources.Load<AudioClip>("Classic Footstep SFX/Forest ground/Forest_ground_jump0");
+        if(!IsLocalPlayer)
+        {
+            audioListener.GetComponent<AudioListener>().enabled = false;
+            return;
+        }
     }
 
 
