@@ -23,8 +23,10 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private NetworkVariable<float> networkDirectionMagnitude = new NetworkVariable<float>();
    
     [SerializeField] private LayerMask layerMask;
-
-   private CharacterController controller;
+    [SerializeField] public NetworkVariable<int> team = new NetworkVariable<int>();
+    private int prevTeam;
+    public Texture _red, _blue;
+    private CharacterController controller;
     private PlayerStatus playerStatus;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
@@ -69,7 +71,10 @@ public class PlayerManager : NetworkBehaviour {
         timer+=Time.deltaTime;
         if(timer < 0.5f)
             return;
-            
+
+        if(prevTeam!=team.Value)
+            setTexture();
+
         if (IsLocalPlayer) {
 
             gravity();
@@ -81,11 +86,13 @@ public class PlayerManager : NetworkBehaviour {
             }
             else
                 playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Dying);
-              
+            
+
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
             UpdateDirectionMagnitudeServerRpc(Mathf.Clamp01(direction.magnitude));
             refreshCameraPosition();
         }
+        prevTeam = team.Value;
     }
 
 
@@ -109,7 +116,10 @@ public class PlayerManager : NetworkBehaviour {
                // Debug.Log($"{hit.transform.gameObject}");
                 BodyPart bodyPart = hit.transform.GetComponent<BodyPart>();
                 if(bodyPart)
-                    bodyPart.inflictDamage(damage);
+                    {
+                        if(hit.transform.root.GetComponent<PlayerManager>().team.Value != team.Value)
+                            bodyPart.inflictDamage(damage);
+                    }
                 
             }
         }
@@ -280,6 +290,30 @@ public class PlayerManager : NetworkBehaviour {
     }
     public bool getIsGrounded() {
         return controller.isGrounded;
+    }
+
+
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateTeamServerRpc(int newTeam) {
+
+        team.Value = newTeam;
+
+    }
+
+    private void setTexture()
+    {   
+        Texture _team = _red;
+        if(team.Value==1)
+            _team = _red;
+        else if(team.Value==2)
+           _team = _blue;
+        transform.Find("Model/Robot_Soldier_Arms1").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+        transform.Find("Model/Robot_Soldier_Arms2").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+        transform.Find("Model/Robot_Soldier_Body").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+        transform.Find("Model/Robot_Soldier_Feet").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+        transform.Find("Model/Robot_Soldier_Head").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+        transform.Find("Model/Robot_Soldier_Legs2").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
     }
 
 }
