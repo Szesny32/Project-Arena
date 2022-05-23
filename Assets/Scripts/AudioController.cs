@@ -14,7 +14,8 @@ public class AudioController : NetworkBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        
         playerManager = GetComponent<PlayerManager>();
         playerStatus = GetComponent<PlayerStatus>();
         audioSource = GetComponent<AudioSource>();

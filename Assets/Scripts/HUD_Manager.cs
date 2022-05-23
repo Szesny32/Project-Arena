@@ -25,7 +25,7 @@ public class HUD_Manager : NetworkBehaviour
     private Color effectColor_SHIELD = new Color(0.0859375f, 0.82421875f, 0.94140625f, 0.5f);
     private float SHIELD_Regeneration = 20f; // (20/s)
     private float MAXSHIELD = 100.0f;
-
+ private float timer = 0.0f;
     
 
     void Start()
@@ -49,6 +49,9 @@ public class HUD_Manager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+           timer+=Time.deltaTime;
+        if(timer < 0.5f)
+            return;
         if (IsLocalPlayer)
         {
             if(playerReceivedDmg.Value )
@@ -67,6 +70,7 @@ public class HUD_Manager : NetworkBehaviour
                 dmgTakenEffect.color = Color.Lerp(dmgTakenEffect.color, new Color(1f ,0f,0f, A), (1f/effectTime)*Time.deltaTime);
                 
                 ShieldRegenServerRpc();
+                 sliderSHIELD.value = SHIELD.Value;
             }
 
 
@@ -126,7 +130,7 @@ public class HUD_Manager : NetworkBehaviour
     private void ShieldRegenServerRpc()
     {  
         SHIELD.Value = Mathf.Clamp(SHIELD.Value+ SHIELD_Regeneration * Time.deltaTime, 0f, MAXSHIELD);
-        sliderSHIELD.value = SHIELD.Value;
+       
     }
 
 

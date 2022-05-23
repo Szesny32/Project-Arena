@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 2315062110426951756}
   - component: {fileID: 7682442846546268749}
   - component: {fileID: 1985369937179763581}
+  - component: {fileID: 1045308360077301836}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -1293,6 +1294,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 192
+  team:
+    m_InternalValue: 0
+  _red: {fileID: 2800000, guid: 1dc5649ba5612364ea83aada38b1da24, type: 3}
+  _blue: {fileID: 2800000, guid: 48ac2fbe689566a4c8fd02ee4cf103d5, type: 3}
 --- !u!114 &3538337171820132998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,10 +1380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412053cab2790324cb2983dab6531883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  playerReceivedDmg:
+    m_InternalValue: 0
+  sliderHP: {fileID: 0}
   HP:
     m_InternalValue: 0
-  playerReceivedDmg:
+  sliderSHIELD: {fileID: 0}
+  SHIELD:
     m_InternalValue: 0
 --- !u!81 &7682442846546268749
 AudioListener:
@@ -1484,6 +1492,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1045308360077301836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538337171820132995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855c55a270c6d154b9aedfb7f70da39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3538337172732951949
 GameObject:
   m_ObjectHideFlags: 0
