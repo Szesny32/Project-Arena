@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using Unity.Netcode;
-using System.Threading;
 
 public class GameManagerScript : NetworkBehaviour
 {
-
     // Start is called before the first frame update
 
 
     int n = 0;
     void Start()
     {
-   
          //Cursor.lockState = CursorLockMode.Locked;
          
     }

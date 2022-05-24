@@ -7,6 +7,7 @@ using Unity.Netcode.Transports.UNET;
 
 public class ConnectionManager : MonoBehaviour
 {
+
     public GameObject connectButtonPanel;
     public string ipAddress = "127.0.0.1";
 
@@ -24,6 +25,7 @@ public class ConnectionManager : MonoBehaviour
             audioSource.Play();
         }
     }
+
     public void Host() {
 
         connectButtonPanel.SetActive(false);
