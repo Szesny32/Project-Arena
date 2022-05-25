@@ -14,6 +14,11 @@ public class ConnectionManager : MonoBehaviour
     UNetTransport transport;
     public AudioSource audioSource;
     private AudioClip glitchClip;
+
+    private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
+    private float[] yStartPos = { 0f, 0f,0f,0f,1.432f, 1.432f};
+    private float[] zStartPos = { -2.55f, -2.63f,8.78f, 8.299f, 2.302f, 1.71f};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +56,9 @@ public class ConnectionManager : MonoBehaviour
 
     Vector3 GetRandomSpawnLocation() {
 
-        return new Vector3(UnityEngine.Random.Range(-5f, 5f), 0f, UnityEngine.Random.Range(-5f, 5f));
+        int spot = UnityEngine.Random.Range(0, 5);
+
+        return new Vector3(xStartPos[spot] + UnityEngine.Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+UnityEngine.Random.Range(-0.5f, 0.5f));
     }
 
     public void AddressChanged(string address) {

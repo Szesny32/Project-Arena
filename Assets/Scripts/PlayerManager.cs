@@ -38,6 +38,11 @@ public class PlayerManager : NetworkBehaviour {
     private float reloadDelay = 3f;
     private float reloadTimer = 0f;
     
+
+    private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
+    private float[] yStartPos = { 0f, 0f,0f,0f,1.432f, 1.432f};
+    private float[] zStartPos = { -2.55f, -2.63f,8.78f, 8.299f, 2.302f, 1.71f};
+
     public bool friendlyFire = false;
     void Start() {
         // setModel(modelPrefab);
@@ -47,7 +52,7 @@ public class PlayerManager : NetworkBehaviour {
             playerCamera.GetComponent<Camera>().enabled = false;
             return;
         }
-
+        
         Cursor.lockState = CursorLockMode.Locked;
         refreshCameraPosition();
 
@@ -62,6 +67,8 @@ public class PlayerManager : NetworkBehaviour {
         //model.transform.Find("Robot_Soldier_Legs2").GetComponent<Renderer>().enabled = false;
         HUD = GetComponent<HUD_Manager>(); 
         
+         int spot = Random.Range(0, 5);
+        transform.position =  new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
 
     }
 

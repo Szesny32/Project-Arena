@@ -1238,7 +1238,7 @@ Transform:
   m_GameObject: {fileID: 3538337171820132995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.7319078, y: 0, z: 0.2614529}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children:
   - {fileID: 4314866891178801960}
   m_Father: {fileID: 0}
@@ -1298,6 +1298,7 @@ MonoBehaviour:
     m_InternalValue: 0
   _red: {fileID: 2800000, guid: 1dc5649ba5612364ea83aada38b1da24, type: 3}
   _blue: {fileID: 2800000, guid: 48ac2fbe689566a4c8fd02ee4cf103d5, type: 3}
+  friendlyFire: 0
 --- !u!114 &3538337171820132998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,6 +1386,9 @@ MonoBehaviour:
   sliderHP: {fileID: 0}
   HP:
     m_InternalValue: 0
+  ammoText: {fileID: 0}
+  ammunition: 0
+  maxAmmunition: 35
   sliderSHIELD: {fileID: 0}
   SHIELD:
     m_InternalValue: 0
