@@ -31,9 +31,14 @@ public class PlayerManager : NetworkBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private PlayerStatus.State playerPrevState;
-    private HUD_Manager Health;
-    private float timer = 0.0f;
-     
+    private HUD_Manager HUD;
+    private float timer = 0f;
+    private float shootDelay = 0.3f;
+    private float shootTimer = 0.0f;
+    private float reloadDelay = 3f;
+    private float reloadTimer = 0f;
+    
+    public bool friendlyFire = false;
     void Start() {
         // setModel(modelPrefab);
         //playerCamera = transform.Find("Camera").gameObject;
@@ -55,7 +60,7 @@ public class PlayerManager : NetworkBehaviour {
         //model.transform.Find("Robot_Soldier_Body").GetComponent<Renderer>().enabled = false;
        // model.transform.Find("Robot_Soldier_Feet").GetComponent<Renderer>().enabled = false;
         //model.transform.Find("Robot_Soldier_Legs2").GetComponent<Renderer>().enabled = false;
-        Health = GetComponent<HUD_Manager>(); 
+        HUD = GetComponent<HUD_Manager>(); 
         
 
     }
@@ -72,15 +77,18 @@ public class PlayerManager : NetworkBehaviour {
         if(timer < 0.5f)
             return;
 
+        reloadTimer -= Time.deltaTime;
+        shootTimer -= Time.deltaTime;
         if(prevTeam!=team.Value)
             setTexture();
 
         if (IsLocalPlayer) {
 
             gravity();
-            if(Health.HP.Value!=0f)
+            if(HUD.HP.Value!=0f)
             {
-                shootingTest();
+                if(reloadTimer<=0f)
+                    shootingTest();
                 mouse();
                 movement();
             }
@@ -109,32 +117,41 @@ public class PlayerManager : NetworkBehaviour {
 
 
 
-
-        if (Input.GetMouseButtonDown(0)) {
-         if(Physics.Raycast (ray, out hit, range, layerMask))
+        if (Input.GetMouseButton(1) && Input.GetMouseButton(0) && shootTimer<=0f) 
+        {
+            if(HUD.ammunition>0)
             {
-               // Debug.Log($"{hit.transform.gameObject}");
-                BodyPart bodyPart = hit.transform.GetComponent<BodyPart>();
-                if(bodyPart)
+                shootTimer = shootDelay;
+                HUD.ammunition--;
+                
+                //TS & AG :: Animacja wystrzału
+                //JK :: Dodać dźwięk wystrzału
+                
+                if(Physics.Raycast (ray, out hit, range, layerMask))
+                {
+                    //BS :: Stworzenie smugi wystrzału
+                    BodyPart bodyPart = hit.transform.GetComponent<BodyPart>();
+                    if(bodyPart)
                     {
-                        if(hit.transform.root.GetComponent<PlayerManager>().team.Value != team.Value)
+                        bool enemy = hit.transform.root.GetComponent<PlayerManager>().team.Value != team.Value;
+                        if(enemy || friendlyFire)
                             bodyPart.inflictDamage(damage);
                     }
-                
+                }
             }
+            else
+            {
+                //JK :: Dodać dźwięk braku amunicji
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.R))
+        {
+            reloadTimer = reloadDelay;
+            HUD.ammunition = HUD.maxAmmunition;
+            //MG :: Przeładowanie w Hudzie
         }
     }
     
-
-
-
-    // private void setModel(GameObject prefab) {
-    //     if (prefab != null) {
-    //         model = Instantiate(prefab, this.transform);
-    //         model.name = "Model";
-    //         model.transform.localPosition = Vector3.zero;
-    //     }
-    // }
 
 
 
@@ -143,39 +160,33 @@ public class PlayerManager : NetworkBehaviour {
             Vector3 headPoint = model.transform.Find("Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End").position;
             Vector3 position = headPoint;
             playerCamera.transform.position = position;
-
-            //playerCamera.transform.localRotation = Quaternion.identity;
-            //cameraRotation = Vector3.zero;
         }
     }
 
     [ServerRpc]
     public void UpdateClientServerRpc(Vector3 newDirection, Vector3 newRotation) {
-
         networkPositionDirection.Value = newDirection;
         networkRotationDirection.Value = newRotation;
-    
     }
     
 
     [ServerRpc]
     public void UpdateDirectionMagnitudeServerRpc(float newDirectionMagnitude) {
-
         networkDirectionMagnitude.Value = newDirectionMagnitude;
-
     }
 
 
-    void gravity() {
-        //velocity = acceleration * time
+    void gravity() 
+    {
         float lossOfVelocity = gravityAcceleration * Time.deltaTime;
         if (controller.isGrounded)
             velocity.y = lossOfVelocity;
         else
             velocity.y += lossOfVelocity;
     }
-    void mouse() {
-        //distance = velocity * time
+
+    void mouse() 
+    {
         float mouseX = mouseSensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
         float mouseY = mouseSensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
         Vector3 rotation = new Vector3(-mouseY, 0, 0);
@@ -185,9 +196,8 @@ public class PlayerManager : NetworkBehaviour {
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    void movement() {
-        //playerPrevState = playerStatus.state;
-
+    void movement() 
+    {
         direction = Vector3.zero;
         direction += transform.right * Input.GetAxis("Horizontal");
         direction += transform.forward * Input.GetAxis("Vertical");
@@ -220,12 +230,12 @@ public class PlayerManager : NetworkBehaviour {
             {
                 if (Input.GetKey(KeyCode.LeftControl)) 
                 {
-                    if(Input.GetMouseButton(1))
+                    if(Input.GetMouseButton(1)&& reloadTimer<=0)
                         playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchAim);
                     else
                         playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);  
                 }
-                else if(Input.GetMouseButton(1))
+                else if(Input.GetMouseButton(1) && reloadTimer<=0)
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
                 else
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
@@ -241,7 +251,9 @@ public class PlayerManager : NetworkBehaviour {
 
             velocity.x = speed * direction.x;
             velocity.z = speed * direction.z;
-        } else {
+        } 
+        else 
+        {
             if (direction.x != 0.0f || direction.z != 0.0f)
                 speed = walkSpeed;
             if (velocity.y > 0)
@@ -252,13 +264,6 @@ public class PlayerManager : NetworkBehaviour {
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;
         controller.Move(distance);
-
-
-
-        // if (playerPrevState != playerStatus.state) {
-        //     updateControllerHeight();
-        //     refreshCameraPosition();
-        // }
     }
 
 
@@ -295,10 +300,10 @@ public class PlayerManager : NetworkBehaviour {
 
 
     [ServerRpc(RequireOwnership = false)]
-    public void UpdateTeamServerRpc(int newTeam) {
+    public void UpdateTeamServerRpc(int newTeam) 
+    {
 
         team.Value = newTeam;
-
     }
 
     private void setTexture()

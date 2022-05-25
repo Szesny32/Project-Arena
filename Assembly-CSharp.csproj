@@ -342,25 +342,25 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Collections.LowLevel.ILSupport">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Unsafe">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.Unsafe.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.Unsafe.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Cecil.Mdb">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Cecil.Pdb">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Cecil">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Cecil.Rocks">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.burst@1.5.4/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1/Mono.Cecil.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1/Mono.Cecil.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -708,58 +708,58 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Netcode.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PlasticSCM.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Netcode.Runtime">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Runtime.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Netcode.Components">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Components.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Netcode.Components.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics.Editor">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Collections">
- <HintPath>C:/Users/draak/OneDrive/Pulpit/project arena/Project-Arena/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+ <HintPath>C:/Users/Szesny/Desktop/Project-Arena/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
