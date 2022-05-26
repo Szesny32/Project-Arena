@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using TMPro;
 
 public class GameManagerScript : NetworkBehaviour
 {
     // Start is called before the first frame update
 
+    private float roundTime = 300f;
+    [SerializeField] private NetworkVariable<float> roundTimer =  new NetworkVariable<float>();
+    [SerializeField] private NetworkVariable<int> round =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> players =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> playersInRedTeam =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> playersAliveInRedTeam =  new NetworkVariable<int>();
 
+    [SerializeField] private NetworkVariable<int> playersInBlueTeam =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> playersAliveInBlueTeam =  new NetworkVariable<int>();
+
+public TextMeshProUGUI HUD_roundTimer;
     int n = 0;
     void Start()
     {
@@ -18,13 +29,12 @@ public class GameManagerScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!NetworkManager.IsServer)
-            {
-            return;
+      
 
-            }
+
         if(NetworkManager.IsServer)
         {
+              update_RoundTimer_ServerRpc();
             //NetworkManager.ConnectedClientsList
             int tmp = NetworkManager.ConnectedClientsIds.Count;
             
@@ -55,11 +65,26 @@ public class GameManagerScript : NetworkBehaviour
                 ++i; 
                 }
             }
-    
         }
+        float minutes = Mathf.Floor(roundTimer.Value/60);
+        float seconds = Mathf.Floor(roundTimer.Value%60f);
+        HUD_roundTimer.text = $"{minutes}:{seconds}";
     }
 
 
+    [ServerRpc]
+    public void update_RoundTimer_ServerRpc() {
+        roundTimer.Value -=Time.deltaTime;
+        if(roundTimer.Value < 0f)
+        {
+            roundTimer.Value = roundTime;
+            round.Value++;
+        }
+    }
+    [ServerRpc]
+    public void restart_RoundTimer_ServerRpc() {
+        roundTimer.Value = roundTime;
+    }
 
 
 }

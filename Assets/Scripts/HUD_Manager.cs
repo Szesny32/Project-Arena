@@ -31,7 +31,7 @@ public class HUD_Manager : NetworkBehaviour
     private float SHIELD_Regeneration = 20f; // (20/s)
     private float MAXSHIELD = 100.0f;
     private float timer = 0.0f;
-    private float rechargeDelay = 3.0f;
+    private float rechargeDelay = 2.0f;
     private float rechargeTimer = 0.0f;
 
     //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab

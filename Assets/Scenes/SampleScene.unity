@@ -4732,6 +4732,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fd318c2c970d94c9080890c11a916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundTimer:
+    m_InternalValue: 0
+  round:
+    m_InternalValue: 0
+  players:
+    m_InternalValue: 0
+  playersInRedTeam:
+    m_InternalValue: 0
+  playersAliveInRedTeam:
+    m_InternalValue: 0
+  playersInBlueTeam:
+    m_InternalValue: 0
+  playersAliveInBlueTeam:
+    m_InternalValue: 0
+  HUD_roundTimer: {fileID: 1694692518}
   _red: {fileID: 2800000, guid: 2e13b09cf6a69da468f608f987733bbd, type: 3}
   _blue: {fileID: 2800000, guid: 86afa9ceae1a3a940a22e88779807576, type: 3}
 --- !u!4 &1304009125
