@@ -35,7 +35,7 @@ public class PlayerManager : NetworkBehaviour {
     private float timer = 0f;
     private float shootDelay = 0.3f;
     private float shootTimer = 0.0f;
-    private float reloadDelay = 3f;
+    private float reloadDelay = 1.0f;
     private float reloadTimer = 0f;
     
 
@@ -89,7 +89,20 @@ public class PlayerManager : NetworkBehaviour {
         if(prevTeam!=team.Value)
             setTexture();
 
-        if (IsLocalPlayer) {
+        if (IsLocalPlayer) 
+        {
+
+        if(reloadTimer > 0)
+        {
+            HUD.CircleFill.fillAmount = (Mathf.Clamp(reloadTimer,0f,reloadDelay)/reloadDelay);
+  
+        }
+        else
+        {
+            HUD.AmmoImage.SetActive(true);
+            HUD.Reloading_Circle.SetActive(false);
+        }
+
 
             gravity();
             if(HUD.HP.Value!=0f)
@@ -132,7 +145,7 @@ public class PlayerManager : NetworkBehaviour {
                 HUD.ammunition--;
                 
                 //TS & AG :: Animacja wystrzału
-                //JK :: Dodać dźwięk wystrzału
+                //KJ :: Dodać dźwięk wystrzału
                 
                 if(Physics.Raycast (ray, out hit, range, layerMask))
                 {
@@ -148,13 +161,16 @@ public class PlayerManager : NetworkBehaviour {
             }
             else
             {
-                //JK :: Dodać dźwięk braku amunicji
+                //KJ :: Dodać dźwięk braku amunicji
             }
         }
-        else if(Input.GetKeyDown(KeyCode.R))
+        else if(Input.GetKeyDown(KeyCode.R) && reloadTimer <= 0)
         {
             reloadTimer = reloadDelay;
             HUD.ammunition = HUD.maxAmmunition;
+            HUD.AmmoImage.SetActive(false);
+            HUD.Reloading_Circle.SetActive(true);
+            HUD.CircleFill.fillAmount = 1.0f;
             //MG :: Przeładowanie w Hudzie
         }
     }
@@ -227,7 +243,7 @@ public class PlayerManager : NetworkBehaviour {
                 else 
                 {
                     speed = walkSpeed;
-                    if(Input.GetMouseButton(1))
+                    if(Input.GetMouseButton(1) && reloadTimer<=0f)
                         playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkingAim);
                     else
                         playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);

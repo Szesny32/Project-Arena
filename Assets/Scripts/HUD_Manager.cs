@@ -28,7 +28,7 @@ public class HUD_Manager : NetworkBehaviour
     public Slider sliderSHIELD;
     public NetworkVariable<float> SHIELD = new NetworkVariable<float>();
     private Color effectColor_SHIELD = new Color(0.0859375f, 0.82421875f, 0.94140625f, 0.5f);
-    private float SHIELD_Regeneration = 5f; // (20/s)
+    private float SHIELD_Regeneration = 20f; // (20/s)
     private float MAXSHIELD = 100.0f;
     private float timer = 0.0f;
     private float rechargeDelay = 3.0f;
@@ -38,13 +38,21 @@ public class HUD_Manager : NetworkBehaviour
     public TextMeshProUGUI TabMenuTeam1;
     public TextMeshProUGUI TabMenuTeam2;
 
+
+    public GameObject AmmoImage;
+    public GameObject Reloading_Circle;
+    public Image CircleFill;
+
     void Start()
     {
         if (!IsLocalPlayer) {
             return;
        }
         dmgTakenEffect =  GameObject.Find("PlayerHUDCanvas/Image").GetComponent<Image>();   
-        
+        AmmoImage =  GameObject.Find("PlayerHUDCanvas/AmmoPanel/AmmoImage");
+        Reloading_Circle = GameObject.Find("PlayerHUDCanvas/AmmoPanel/Reloading_Circle");
+        CircleFill = GameObject.Find("PlayerHUDCanvas/AmmoPanel/Reloading_Circle/Circle/Circle_fill").GetComponent<Image>();
+
         ammunition = maxAmmunition;
         ammoText = GameObject.Find("PlayerHUDCanvas/AmmoPanel/AmmoCounter").GetComponent<TextMeshProUGUI>();   
         ammoText.text= $"{ammunition}/{maxAmmunition}";
