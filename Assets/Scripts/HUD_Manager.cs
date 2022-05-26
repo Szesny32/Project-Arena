@@ -16,6 +16,7 @@ public class HUD_Manager : NetworkBehaviour
 
     public Slider sliderHP;
     public NetworkVariable<float> HP = new NetworkVariable<float>();
+    public NetworkVariable<bool> isAlive = new NetworkVariable<bool>();
     private float MAXHP = 100.0f;
     private Color effectColor_HP = new Color(1f,0f,0f,0.5f);
     public TextMeshProUGUI ammoText;
@@ -34,9 +35,7 @@ public class HUD_Manager : NetworkBehaviour
     private float rechargeDelay = 2.0f;
     private float rechargeTimer = 0.0f;
 
-    //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab
-    public TextMeshProUGUI TabMenuTeam1;
-    public TextMeshProUGUI TabMenuTeam2;
+
 
 
     public GameObject AmmoImage;
@@ -120,8 +119,11 @@ public class HUD_Manager : NetworkBehaviour
             float x = DMG - SHIELD.Value;
             SHIELD.Value = 0.0f;
 
-            if(x > HP.Value)
-                HP.Value = 0f;
+            if(x >= HP.Value)
+                {
+                    HP.Value = 0f;
+                    isAlive.Value = false;
+                }
             else
                 HP.Value -= DMG;
         }
@@ -133,6 +135,7 @@ public class HUD_Manager : NetworkBehaviour
     public void setHPServerRpc(float newHP)
     {  
         HP.Value = newHP;
+        isAlive.Value = true;
     }
 
     [ServerRpc]

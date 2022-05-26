@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using TMPro;
-
+using Unity.Collections;
 public class GameManagerScript : NetworkBehaviour
 {
     // Start is called before the first frame update
@@ -18,7 +18,20 @@ public class GameManagerScript : NetworkBehaviour
     [SerializeField] private NetworkVariable<int> playersInBlueTeam =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> playersAliveInBlueTeam =  new NetworkVariable<int>();
 
-public TextMeshProUGUI HUD_roundTimer;
+    [SerializeField] private NetworkVariable<int> blueTeamScore =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> redTeamScore =  new NetworkVariable<int>();
+
+    [SerializeField] private NetworkVariable<FixedString64Bytes> blueTeamList =  new NetworkVariable<FixedString64Bytes>();
+    [SerializeField] private NetworkVariable<FixedString64Bytes> redTeamList =  new NetworkVariable<FixedString64Bytes>();
+
+
+    //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab
+    public TextMeshProUGUI TabMenuTeam1;
+    public TextMeshProUGUI TabMenuTeam2;
+
+
+    public TextMeshProUGUI HUD_roundTimer;
+
     int n = 0;
     void Start()
     {
@@ -27,11 +40,11 @@ public TextMeshProUGUI HUD_roundTimer;
     }
     public Texture _red, _blue;
     // Update is called once per frame
+
+
     void Update()
     {
       
-
-
         if(NetworkManager.IsServer)
         {
               update_RoundTimer_ServerRpc();
@@ -50,6 +63,9 @@ public TextMeshProUGUI HUD_roundTimer;
                     NetworkObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
                     int newTeam = i%2+1;
                     playerObj.GetComponent<PlayerManager>().UpdateTeamServerRpc(newTeam);
+
+                 
+
                     // Texture team;
                     // if(i < x)
                     //     team = _red;
@@ -64,11 +80,38 @@ public TextMeshProUGUI HUD_roundTimer;
                         // playerObj.transform.Find("Model/Robot_Soldier_Legs2").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
                 ++i; 
                 }
+
             }
+            refresh_playerList_ServerRpc();
         }
+
         float minutes = Mathf.Floor(roundTimer.Value/60);
         float seconds = Mathf.Floor(roundTimer.Value%60f);
         HUD_roundTimer.text = $"{minutes}:{seconds}";
+
+
+        TabMenuTeam1.text = redTeamList.Value.ToString();
+        TabMenuTeam2.text = blueTeamList.Value.ToString();
+
+
+    }
+
+    [ServerRpc]
+    public void refresh_playerList_ServerRpc()
+    {
+         redTeamList.Value="";
+          blueTeamList.Value="";
+         
+        foreach(ulong clientId in NetworkManager.ConnectedClientsIds)
+        {
+            NetworkObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
+            if(playerObj.GetComponent<PlayerManager>().team.Value == 1)
+                redTeamList.Value+=$"{playerObj.name}\n";
+            
+            else if(playerObj.GetComponent<PlayerManager>().team.Value == 2)
+                blueTeamList.Value+=$"{playerObj.name}\n";
+            
+        }
     }
 
 
