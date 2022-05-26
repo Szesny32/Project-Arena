@@ -17,7 +17,7 @@ public class PlayerStatus : NetworkBehaviour
     {   
         if (!IsLocalPlayer) return;
         
-        UpdateStatusServerRpc(State.Run);
+        UpdateStatusServerRpc(State.Idlee);
     }
 
     // Update is called once per frame

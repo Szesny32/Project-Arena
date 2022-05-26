@@ -29,7 +29,7 @@ public class ConnectionManager : MonoBehaviour
         if(!audioSource.isPlaying)
         {
             audioSource.clip = glitchClip;
-            audioSource.Play();
+            //audioSource.Play();
         }
 
         playerHUD.SetActive(false);

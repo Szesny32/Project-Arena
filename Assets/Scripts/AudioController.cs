@@ -8,9 +8,14 @@ public class AudioController : NetworkBehaviour
     private PlayerStatus playerStatus;
     private PlayerManager playerManager;
     private AudioSource audioSource;
-    private AudioClip footstep;
+    private AudioClip footstep0;
+    private AudioClip footstep1;
+    private AudioClip footstep2;
+    private AudioClip footstep3;
+    private AudioClip footstep4;
     private AudioClip jump;
     private AudioClip run;
+    [SerializeField] public NetworkVariable<int> whichAudio = new NetworkVariable<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +24,8 @@ public class AudioController : NetworkBehaviour
         playerManager = GetComponent<PlayerManager>();
         playerStatus = GetComponent<PlayerStatus>();
         audioSource = GetComponent<AudioSource>();
-        footstep = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_Step0");
+        footstep0 = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_Step0");
+        footstep2 = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_Step2");
         run = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_running_loop0");
         jump = Resources.Load<AudioClip>("Classic Footstep SFX/Forest ground/Forest_ground_jump0");
     }
@@ -28,80 +34,65 @@ public class AudioController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerStatus.State state = playerStatus.state.Value;
-
-       
-
-        switch (state)
+        PlayerStatus.State state = playerStatus.state.Value;  
+        if(IsLocalPlayer)
         {
-            case PlayerStatus.State.Idlee:
-                {
-                   
-                    
-                }
-                break;
-
-            case PlayerStatus.State.Walk:
-                {
-                    if (!audioSource.isPlaying)
-                        {
-                            audioSource.clip = footstep;
-                            audioSource.PlayOneShot(footstep);
-                        }
-                }
-
-                break;
-
-            case PlayerStatus.State.Run:
-                {
-                    if (!audioSource.isPlaying)
-                        {
-                            audioSource.clip = run;
-                            audioSource.PlayOneShot(run);
-                        }
-                }
-                break;
-
-            case PlayerStatus.State.Jump:
-                {
-                    if (!audioSource.isPlaying)
-                        {
-                            audioSource.clip = jump;
-                            audioSource.PlayOneShot(jump);
-                        }      
-                }
-                break;
-
-            case PlayerStatus.State.IdleAim:
-                {
-                    
-                }
-                break;
-
-            case PlayerStatus.State.WalkingAim:
-                {
-                    
-                }
-                break;
-
-            case PlayerStatus.State.Crouch:
-                {
-                    
-                }
-                break;
-            case PlayerStatus.State.CrouchAim:
-                {
-                          
-                }
-                break;
+            if(state==PlayerStatus.State.Walk || state==PlayerStatus.State.WalkingAim)
+            {
+                setAudioServerRpc(1);
+            }
+            else if(state==PlayerStatus.State.Run)
+            {
+                setAudioServerRpc(2);
+            }
+            else if(state==PlayerStatus.State.Jump)
+            {
+                setAudioServerRpc(3);
+            }
+            else if (state==PlayerStatus.State.Falls || state==PlayerStatus.State.Rises)
+            {
                 
-
-            default:
-                // Debug.Log("Custom ERROR "+playerObject.name+" state undefined");
-                break;
-
+            }
+            else
+            {
+                setAudioServerRpc(0);
+            }
+                    
+        }
+        if(whichAudio.Value==1)
+        {
+            
+            if(!audioSource.isPlaying)
+            {
+                int x = Random.Range(0,1);
+                if(x==0)
+                    audioSource.PlayOneShot(footstep0, 0.4f);
+                else if(x==1)
+                    audioSource.PlayOneShot(footstep2, 0.4f);                              
+            }
+                
+        }
+        else if(whichAudio.Value==2)
+        {
+            if(!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(run, 0.7f);
+            }
+        }
+        else if(whichAudio.Value==3)
+        {
+            if(!audioSource.isPlaying)
+                audioSource.PlayOneShot(jump);
         }
         
+
+        
+    }
+
+    [ServerRpc]
+    private void setAudioServerRpc(int x)
+    {
+        whichAudio.Value = x;
     }
 
 

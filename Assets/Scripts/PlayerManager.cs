@@ -24,12 +24,17 @@ public class PlayerManager : NetworkBehaviour {
    
     [SerializeField] private LayerMask layerMask;
     [SerializeField] public NetworkVariable<int> team = new NetworkVariable<int>();
+    [SerializeField] public NetworkVariable<int> shoot = new NetworkVariable<int>();
+    
     private int prevTeam;
     public Texture _red, _blue;
     private CharacterController controller;
     private PlayerStatus playerStatus;
-    private AudioSource audioSource;
-    private AudioClip clip;
+    public AudioSource audioSource;
+    private AudioClip shoot0;
+    private AudioClip shoot1;
+    private AudioClip shoot2;
+    private AudioClip shoot3;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private PlayerStatus.State playerPrevState;
@@ -61,8 +66,10 @@ public class PlayerManager : NetworkBehaviour {
 
         controller = GetComponent<CharacterController>(); //shift alt down
         playerStatus = GetComponent<PlayerStatus>();
-        audioSource = GetComponent<AudioSource>();
-        clip = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_1");
+        shoot0 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_1");
+        shoot1 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_2");
+        shoot2 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_3");
+        shoot3 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_4");
         setController(0.55f, 0.2f);
 
 
@@ -126,6 +133,29 @@ public class PlayerManager : NetworkBehaviour {
             refreshCameraPosition();
         }
         prevTeam = team.Value;
+
+        if(shoot.Value==1)
+        {
+            int x = Random.Range(0,3);
+            if(x==0)
+                audioSource.PlayOneShot(shoot0);
+            else if(x==1)
+                audioSource.PlayOneShot(shoot1); 
+            else if(x==2)
+                audioSource.PlayOneShot(shoot2);
+            else if(x==3)
+                audioSource.PlayOneShot(shoot3);
+
+        }
+        else if(shoot.Value==2)
+        {
+            ///audioSource.PlayOneShot(clip);
+        }
+        if(shoot.Value==3)
+        {
+           // audioSource.PlayOneShot(clip);
+        }
+        
     }
 
 
@@ -150,9 +180,8 @@ public class PlayerManager : NetworkBehaviour {
                 HUD.ammunition--;
                 
                 //TS & AG :: Animacja wystrzału
-                //JK :: Dodać dźwięk wystrzału
-                audioSource.clip = clip;
-                audioSource.PlayOneShot(clip);
+                ifShootingServerRpc(1);
+                
                 
                 if(Physics.Raycast (ray, out hit, range, layerMask))
                 {
@@ -168,6 +197,7 @@ public class PlayerManager : NetworkBehaviour {
             }
             else
             {
+                ifShootingServerRpc(2);
                 //KJ :: Dodać dźwięk braku amunicji
             }
         }
@@ -178,8 +208,15 @@ public class PlayerManager : NetworkBehaviour {
             HUD.AmmoImage.SetActive(false);
             HUD.Reloading_Circle.SetActive(true);
             HUD.CircleFill.fillAmount = 1.0f;
+            ifShootingServerRpc(3); //przeladowanie
             //MG :: Przeładowanie w Hudzie
         }
+        else
+        {
+            ifShootingServerRpc(0);
+        }
+        
+        
     }
     
 
@@ -349,6 +386,12 @@ public class PlayerManager : NetworkBehaviour {
         transform.Find("Model/Robot_Soldier_Feet").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
         transform.Find("Model/Robot_Soldier_Head").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
         transform.Find("Model/Robot_Soldier_Legs2").GetComponent<Renderer>().material.SetTexture("_MainTex", _team);
+    }
+
+    [ServerRpc]
+    public void ifShootingServerRpc(int x)
+    {
+        shoot.Value = x;
     }
 
 }
