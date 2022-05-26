@@ -19,7 +19,7 @@ public class AudioController : NetworkBehaviour
         playerManager = GetComponent<PlayerManager>();
         playerStatus = GetComponent<PlayerStatus>();
         audioSource = GetComponent<AudioSource>();
-        footstep = Resources.Load<AudioClip>("Classic Footstep SFX/Floor/Floor_step10");
+        footstep = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_Step0");
         run = Resources.Load<AudioClip>("Classic Footstep SFX/Ground/Ground_running_loop0");
         jump = Resources.Load<AudioClip>("Classic Footstep SFX/Forest ground/Forest_ground_jump0");
     }

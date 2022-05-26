@@ -62,7 +62,7 @@ public class PlayerManager : NetworkBehaviour {
         controller = GetComponent<CharacterController>(); //shift alt down
         playerStatus = GetComponent<PlayerStatus>();
         audioSource = GetComponent<AudioSource>();
-        clip = Resources.Load("Scifi Guns SFX Pack/Gun2_1");
+        clip = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_1");
         setController(0.55f, 0.2f);
 
 
@@ -150,13 +150,9 @@ public class PlayerManager : NetworkBehaviour {
                 HUD.ammunition--;
                 
                 //TS & AG :: Animacja wystrzału
-<<<<<<< Updated upstream
-                //KJ :: Dodać dźwięk wystrzału
-=======
                 //JK :: Dodać dźwięk wystrzału
                 audioSource.clip = clip;
-                audioSource.PlayOneShot(clip, 0.7f);
->>>>>>> Stashed changes
+                audioSource.PlayOneShot(clip);
                 
                 if(Physics.Raycast (ray, out hit, range, layerMask))
                 {
