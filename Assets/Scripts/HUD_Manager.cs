@@ -38,6 +38,7 @@ public class HUD_Manager : NetworkBehaviour
 
     private GameObject crosshair;
     private Vector3 crosshairScale = new Vector3(1f,1f,1f);
+    public float crosshairScalingTime = 1f / 0.25f;
     public GameObject AmmoImage;
     public GameObject Reloading_Circle;
     public Image CircleFill;
@@ -165,7 +166,7 @@ public class HUD_Manager : NetworkBehaviour
     private void updateCrosshair()
     {
         
-        crosshair.transform.localScale = Vector3.Lerp(crosshair.transform.localScale , crosshairScale, (1f/0.25f) * Time.deltaTime);
+        crosshair.transform.localScale = Vector3.Lerp(crosshair.transform.localScale , crosshairScale, crosshairScalingTime * Time.deltaTime);
     }
 
 }

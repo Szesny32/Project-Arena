@@ -44,6 +44,7 @@ public class PlayerManager : NetworkBehaviour {
     private float shootTimer = 0.0f;
     private float reloadDelay = 1.0f;
     private float reloadTimer = 0f;
+    private float sensitivity = 0f;
     
 
     private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
@@ -171,7 +172,6 @@ public class PlayerManager : NetworkBehaviour {
         RaycastHit hit;
 
 
-
         if (Input.GetMouseButton(0) && shootTimer<=0f) 
         {
             if(HUD.ammunition>0)
@@ -216,6 +216,7 @@ public class PlayerManager : NetworkBehaviour {
             ifShootingServerRpc(0);
         }
         
+
         
     }
     
@@ -254,18 +255,27 @@ public class PlayerManager : NetworkBehaviour {
 
     void mouse() 
     {
-        float sensitivity;
-        if(Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0) && shootTimer==shootDelay && reloadTimer<=0f&& HUD.ammunition>0) 
+        {
+            HUD.setCrosshairScale(new Vector3(2f, 2, 2f));
+            HUD.crosshairScalingTime = 1f/0.01f;
+            sensitivity = 0.1f * mouseSensitivity;
+        }
+        else if(Input.GetMouseButton(1))
         {
             HUD.setCrosshairScale(new Vector3(0.75f, 0.75f, 0.75f));
             sensitivity = 0.5f * mouseSensitivity;
+             HUD.crosshairScalingTime = 1f/0.25f;
         }
         else
         {
             HUD.setCrosshairScale(new Vector3(1f, 1f, 1f));
             sensitivity = mouseSensitivity;
+            HUD.crosshairScalingTime = 1f/0.25f;
         }
-
+        
+      
+        
         // BS :: przesunięcie kamery bliżej gdy celowanie
 
         float mouseX = sensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
