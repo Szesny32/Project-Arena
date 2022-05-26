@@ -469,6 +469,7 @@ MonoBehaviour:
   playerHUD: {fileID: 1783257064}
   ipAddress: 127.0.0.1
   audioSource: {fileID: 0}
+  audioListener: {fileID: 156381402}
 --- !u!114 &156381397
 MonoBehaviour:
   m_ObjectHideFlags: 0

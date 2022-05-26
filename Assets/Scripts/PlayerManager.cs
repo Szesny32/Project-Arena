@@ -28,6 +28,8 @@ public class PlayerManager : NetworkBehaviour {
     public Texture _red, _blue;
     private CharacterController controller;
     private PlayerStatus playerStatus;
+    private AudioSource audioSource;
+    private AudioClip clip;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private PlayerStatus.State playerPrevState;
@@ -50,6 +52,7 @@ public class PlayerManager : NetworkBehaviour {
 
         if (!IsLocalPlayer) {
             playerCamera.GetComponent<Camera>().enabled = false;
+            GetComponent<AudioListener>().enabled = false;
             return;
         }
         
@@ -58,6 +61,8 @@ public class PlayerManager : NetworkBehaviour {
 
         controller = GetComponent<CharacterController>(); //shift alt down
         playerStatus = GetComponent<PlayerStatus>();
+        audioSource = GetComponent<AudioSource>();
+        clip = Resources.Load("Scifi Guns SFX Pack/Gun2_1");
         setController(0.55f, 0.2f);
 
 
@@ -145,7 +150,13 @@ public class PlayerManager : NetworkBehaviour {
                 HUD.ammunition--;
                 
                 //TS & AG :: Animacja wystrzału
+<<<<<<< Updated upstream
                 //KJ :: Dodać dźwięk wystrzału
+=======
+                //JK :: Dodać dźwięk wystrzału
+                audioSource.clip = clip;
+                audioSource.PlayOneShot(clip, 0.7f);
+>>>>>>> Stashed changes
                 
                 if(Physics.Raycast (ray, out hit, range, layerMask))
                 {

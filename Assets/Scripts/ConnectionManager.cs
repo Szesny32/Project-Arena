@@ -14,6 +14,7 @@ public class ConnectionManager : MonoBehaviour
 
     UNetTransport transport;
     public AudioSource audioSource;
+    public AudioListener audioListener;
     private AudioClip glitchClip;
 
     private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
@@ -42,6 +43,7 @@ public class ConnectionManager : MonoBehaviour
         NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
         NetworkManager.Singleton.StartHost();
         audioSource.Stop();
+        audioListener.enabled = false;
     }
     public void Client() {
 
@@ -51,6 +53,8 @@ public class ConnectionManager : MonoBehaviour
         playerHUD.SetActive(true);
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.UTF8.GetBytes("Password123");
         NetworkManager.Singleton.StartClient();
+        audioSource.Stop();
+        audioListener.enabled = false;
     }
 
     private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate callback) {
