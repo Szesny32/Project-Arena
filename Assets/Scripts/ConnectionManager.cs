@@ -33,8 +33,6 @@ public class ConnectionManager : MonoBehaviour
 
         playerHUD.SetActive(false);
 
-
-
     }
 
     public void Host() {

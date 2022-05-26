@@ -24,6 +24,7 @@ public class HUD_Manager : NetworkBehaviour
     public float maxAmmunition = 35;
    
     
+    
     public Slider sliderSHIELD;
     public NetworkVariable<float> SHIELD = new NetworkVariable<float>();
     private Color effectColor_SHIELD = new Color(0.0859375f, 0.82421875f, 0.94140625f, 0.5f);
@@ -33,7 +34,9 @@ public class HUD_Manager : NetworkBehaviour
     private float rechargeDelay = 3.0f;
     private float rechargeTimer = 0.0f;
 
-
+    //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab
+    public TextMeshProUGUI TabMenuTeam1;
+    public TextMeshProUGUI TabMenuTeam2;
 
     void Start()
     {
@@ -86,9 +89,6 @@ public class HUD_Manager : NetworkBehaviour
                  sliderSHIELD.value = SHIELD.Value;
             }
             ammoText.text= $"{ammunition}/{maxAmmunition}";
-
-
-
         }
     }
 
