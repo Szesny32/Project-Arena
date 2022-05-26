@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectButtonPanel: {fileID: 518853190}
+  playerHUD: {fileID: 1783257064}
   ipAddress: 127.0.0.1
   audioSource: {fileID: 0}
 --- !u!114 &156381397

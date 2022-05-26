@@ -9,6 +9,7 @@ public class ConnectionManager : MonoBehaviour
 {
 
     public GameObject connectButtonPanel;
+    public GameObject playerHUD;
     public string ipAddress = "127.0.0.1";
 
     UNetTransport transport;
@@ -29,11 +30,17 @@ public class ConnectionManager : MonoBehaviour
             audioSource.clip = glitchClip;
             audioSource.Play();
         }
+
+        playerHUD.SetActive(false);
+
+
+
     }
 
     public void Host() {
 
         connectButtonPanel.SetActive(false);
+        playerHUD.SetActive(true);
         NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
         NetworkManager.Singleton.StartHost();
         audioSource.Stop();
@@ -43,6 +50,7 @@ public class ConnectionManager : MonoBehaviour
         transport = NetworkManager.Singleton.GetComponent<UNetTransport>();
         transport.ConnectAddress = ipAddress;
         connectButtonPanel.SetActive(false);
+        playerHUD.SetActive(true);
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.UTF8.GetBytes("Password123");
         NetworkManager.Singleton.StartClient();
     }
