@@ -138,13 +138,13 @@ public class PlayerManager : NetworkBehaviour {
         {
             int x = Random.Range(0,3);
             if(x==0)
-                audioSource.PlayOneShot(shoot0);
+                audioSource.PlayOneShot(shoot0, 0.25f);
             else if(x==1)
-                audioSource.PlayOneShot(shoot1); 
+                audioSource.PlayOneShot(shoot1, 0.25f); 
             else if(x==2)
-                audioSource.PlayOneShot(shoot2);
+                audioSource.PlayOneShot(shoot2, 0.25f);
             else if(x==3)
-                audioSource.PlayOneShot(shoot3);
+                audioSource.PlayOneShot(shoot3, 0.25f);
 
         }
         else if(shoot.Value==2)
@@ -172,7 +172,7 @@ public class PlayerManager : NetworkBehaviour {
 
 
 
-        if (Input.GetMouseButton(1) && Input.GetMouseButton(0) && shootTimer<=0f) 
+        if (Input.GetMouseButton(0) && shootTimer<=0f) 
         {
             if(HUD.ammunition>0)
             {
@@ -254,8 +254,22 @@ public class PlayerManager : NetworkBehaviour {
 
     void mouse() 
     {
-        float mouseX = mouseSensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
-        float mouseY = mouseSensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
+        float sensitivity;
+        if(Input.GetMouseButton(1))
+        {
+            HUD.setCrosshairScale(new Vector3(0.75f, 0.75f, 0.75f));
+            sensitivity = 0.5f * mouseSensitivity;
+        }
+        else
+        {
+            HUD.setCrosshairScale(new Vector3(1f, 1f, 1f));
+            sensitivity = mouseSensitivity;
+        }
+
+        // BS :: przesunięcie kamery bliżej gdy celowanie
+
+        float mouseX = sensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
+        float mouseY = sensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
         Vector3 rotation = new Vector3(-mouseY, 0, 0);
         cameraRotation += rotation;
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, cameraMinRange, cameraMaxRange);

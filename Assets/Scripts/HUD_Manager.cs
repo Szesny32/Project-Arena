@@ -36,8 +36,8 @@ public class HUD_Manager : NetworkBehaviour
     private float rechargeTimer = 0.0f;
 
 
-
-
+    private GameObject crosshair;
+    private Vector3 crosshairScale = new Vector3(1f,1f,1f);
     public GameObject AmmoImage;
     public GameObject Reloading_Circle;
     public Image CircleFill;
@@ -51,7 +51,7 @@ public class HUD_Manager : NetworkBehaviour
         AmmoImage =  GameObject.Find("PlayerHUDCanvas/AmmoPanel/AmmoImage");
         Reloading_Circle = GameObject.Find("PlayerHUDCanvas/AmmoPanel/Reloading_Circle");
         CircleFill = GameObject.Find("PlayerHUDCanvas/AmmoPanel/Reloading_Circle/Circle/Circle_fill").GetComponent<Image>();
-
+        crosshair = GameObject.Find("PlayerHUDCanvas/CrosshairSprite");
         ammunition = maxAmmunition;
         ammoText = GameObject.Find("PlayerHUDCanvas/AmmoPanel/AmmoCounter").GetComponent<TextMeshProUGUI>();   
         ammoText.text= $"{ammunition}/{maxAmmunition}";
@@ -96,6 +96,7 @@ public class HUD_Manager : NetworkBehaviour
                  sliderSHIELD.value = SHIELD.Value;
             }
             ammoText.text= $"{ammunition}/{maxAmmunition}";
+            updateCrosshair();
         }
     }
 
@@ -157,6 +158,15 @@ public class HUD_Manager : NetworkBehaviour
        
     }
 
+    public void setCrosshairScale(Vector3 scale)
+    {
+        crosshairScale = scale;
+    }
+    private void updateCrosshair()
+    {
+        
+        crosshair.transform.localScale = Vector3.Lerp(crosshair.transform.localScale , crosshairScale, (1f/0.25f) * Time.deltaTime);
+    }
 
 }
 

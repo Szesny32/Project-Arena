@@ -66,9 +66,9 @@ public class AudioController : NetworkBehaviour
             {
                 int x = Random.Range(0,1);
                 if(x==0)
-                    audioSource.PlayOneShot(footstep0, 0.4f);
+                    audioSource.PlayOneShot(footstep0, 0.05f);
                 else if(x==1)
-                    audioSource.PlayOneShot(footstep2, 0.4f);                              
+                    audioSource.PlayOneShot(footstep2, 0.05f);                              
             }
                 
         }
@@ -76,7 +76,7 @@ public class AudioController : NetworkBehaviour
         {
             if(!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(run, 0.7f);
+                audioSource.PlayOneShot(run, 0.5f);
             }
         }
         else if(whichAudio.Value==3)
