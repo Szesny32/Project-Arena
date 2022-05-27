@@ -34,29 +34,20 @@ public class AudioController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerStatus.State state = playerStatus.state.Value;  
+        ;  
         if(IsLocalPlayer)
         {
-            if(state==PlayerStatus.State.Walk || state==PlayerStatus.State.WalkAim ||  state==PlayerStatus.State.WalkShoot)
-            {
+            if(playerStatus.WASD.Value && !playerStatus.SHIFT.Value)
                 setAudioServerRpc(1);
-            }
-            else if(state==PlayerStatus.State.Run || state==PlayerStatus.State.RunAim||  state==PlayerStatus.State.RunShoot)
-            {
+            
+            else if(playerStatus.WASD.Value && playerStatus.SHIFT.Value)
                 setAudioServerRpc(2);
-            }
-            else if(state==PlayerStatus.State.Jump)
-            {
+            
+            else if(playerStatus.SPACE.Value)
                 setAudioServerRpc(3);
-            }
-            else if (state==PlayerStatus.State.Falls || state==PlayerStatus.State.Rises)
-            {
-                
-            }
+            
             else
-            {
                 setAudioServerRpc(0);
-            }
                     
         }
         if(whichAudio.Value==1)

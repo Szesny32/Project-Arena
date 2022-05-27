@@ -13,9 +13,9 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private float cameraMinRange = -30.0f;
     [SerializeField] private float cameraMaxRange = 60.0f;
 
-    [SerializeField] private float crouchSpeed = 2.0f;
-    [SerializeField] private float walkSpeed = 4.0f;
-    [SerializeField] private float runSpeed = 6.0f;
+    private float crouchSpeed = 2f;
+    private float walkSpeed = 2.5f;
+    private float runSpeed = 4.0f;
     [SerializeField] private float jumpHeight = 0.6f;
     [SerializeField] private float gravityAcceleration = -9.81f;
     [SerializeField] private NetworkVariable<Vector3> networkPositionDirection = new NetworkVariable<Vector3>();
@@ -37,7 +37,6 @@ public class PlayerManager : NetworkBehaviour {
     private AudioClip shoot3;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
-    private PlayerStatus.State playerPrevState;
     private HUD_Manager HUD;
     private float timer = 0f;
     private float shootDelay = 0.3f;
@@ -128,7 +127,7 @@ public class PlayerManager : NetworkBehaviour {
                 mouse();
             }
             else
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Dying);
+                playerStatus.setFlagServerRpc(8, true);
             
 
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
@@ -173,22 +172,26 @@ public class PlayerManager : NetworkBehaviour {
 
         RaycastHit hit;
 
+        playerStatus.setFlagServerRpc(2, false); //LPM
+        playerStatus.setFlagServerRpc(6, false); //R
 
-        bool aiming = playerStatus.state.Value == PlayerStatus.State.IdleAim 
-        || playerStatus.state.Value ==PlayerStatus.State.WalkAim 
-        || playerStatus.state.Value == PlayerStatus.State.RunAim;
-        if (Input.GetMouseButton(0) && shootTimer<=0f && aiming) 
+        if (Input.GetMouseButton(0) && shootTimer<=0f && playerStatus.PPM.Value) 
         {  
 
 
+    //playerStatus.setFlagServerRpc(int flagIndex, bool f); 
+    //playerStatus.setFlagServerRpc(1, bool f); //PPM
+    //playerStatus.setFlagServerRpc(2, bool f); //LPM
+    //playerStatus.setFlagServerRpc(3, bool f); //WASD
+    //playerStatus.setFlagServerRpc(4, bool f); //SHIFT
+    //playerStatus.setFlagServerRpc(5, bool f); //SPACE
+    //playerStatus.setFlagServerRpc(6, bool f); //R
+    //playerStatus.setFlagServerRpc(7, bool f); //CTRL
+    //playerStatus.setFlagServerRpc(8, bool f); //DEAD
+
             if(HUD.ammunition>0)
             {
-                if(playerStatus.state.Value == PlayerStatus.State.IdleAim)
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleShoot);
-                else if(playerStatus.state.Value ==PlayerStatus.State.WalkAim)
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkShoot);
-                else if(playerStatus.state.Value == PlayerStatus.State.RunAim)
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunShoot);
+                playerStatus.setFlagServerRpc(2, true); //LPM
 
                 shootTimer = shootDelay;
                 HUD.ammunition--;
@@ -217,17 +220,8 @@ public class PlayerManager : NetworkBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.R) && reloadTimer <= 0)
         {
-            if(playerStatus.state.Value == PlayerStatus.State.Idle || playerStatus.state.Value == PlayerStatus.State.IdleAim)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleReload);
-            else if(playerStatus.state.Value == PlayerStatus.State.Walk || playerStatus.state.Value == PlayerStatus.State.WalkAim)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkReload);
-            else if(playerStatus.state.Value == PlayerStatus.State.Run || playerStatus.state.Value == PlayerStatus.State.RunAim)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunReload);
-            else if(playerStatus.state.Value == PlayerStatus.State.Crouch || playerStatus.state.Value == PlayerStatus.State.CrouchAim)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchReload);
-            else if(playerStatus.state.Value == PlayerStatus.State.Crouching || playerStatus.state.Value == PlayerStatus.State.CrouchingAim)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchingReload);
-            
+            playerStatus.setFlagServerRpc(6, true);
+
             reloadTimer = reloadDelay;
             HUD.ammunition = HUD.maxAmmunition;
             HUD.AmmoImage.SetActive(false);
@@ -314,6 +308,26 @@ public class PlayerManager : NetworkBehaviour {
         transform.Rotate(Vector3.up * mouseX);
     }
 
+
+    // [1:PPM]
+    // [2:LPM]
+    // [3:WASD]
+    // [4:SHIFT]
+    // [5:SPACE]
+    // [6:R]
+    // [7:CTRL]
+    // [8:DEAD]
+
+    //playerStatus.setFlagServerRpc(int flagIndex, bool f); 
+    //playerStatus.setFlagServerRpc(1, bool f); //PPM
+    //playerStatus.setFlagServerRpc(2, bool f); //LPM
+    //playerStatus.setFlagServerRpc(3, bool f); //WASD
+    //playerStatus.setFlagServerRpc(4, bool f); //SHIFT
+    //playerStatus.setFlagServerRpc(5, bool f); //SPACE
+    //playerStatus.setFlagServerRpc(6, bool f); //R
+    //playerStatus.setFlagServerRpc(7, bool f); //CTRL
+    //playerStatus.setFlagServerRpc(8, bool f); //DEAD
+
     void movement() 
     {
         direction = Vector3.zero;
@@ -321,55 +335,42 @@ public class PlayerManager : NetworkBehaviour {
         direction += transform.forward * Input.GetAxis("Vertical");
         float speed = 0.0f;
 
-        if (controller.isGrounded) {//WASD
+        
+                                //SHIFT
+        playerStatus.setFlagServerRpc(1, (reloadTimer>0f) ? false : Input.GetMouseButton(1));           //PPM
+        playerStatus.setFlagServerRpc(7, Input.GetKey(KeyCode.LeftControl));                            //CTRL
 
+
+        if (controller.isGrounded) 
+        {
             if (direction.x != 0.0f || direction.z != 0.0f) 
             {
+                playerStatus.setFlagServerRpc(3, true);                                                 //WASD
+                playerStatus.setFlagServerRpc(4, Input.GetKey(KeyCode.LeftShift));     
+
                 if (Input.GetKey(KeyCode.LeftShift)) 
-                {
                     speed = runSpeed;
-                    if(Input.GetMouseButton(1) && reloadTimer<=0f)
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunAim);
-                    else
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Run);
-                }
                 else if (Input.GetKey(KeyCode.LeftControl)) 
-                {
                     speed = crouchSpeed;
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouching);
-                } 
                 else 
-                {
                     speed = walkSpeed;
-                    if(Input.GetMouseButton(1) && reloadTimer<=0f)
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkAim);
-                    else
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
-                }
             } 
             else
             {
-                if (Input.GetKey(KeyCode.LeftControl)) 
-                {
-                    if(Input.GetMouseButton(1)&& reloadTimer<=0)
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchAim);
-                    else
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouch);  
-                }
-                else if(Input.GetMouseButton(1) && reloadTimer<=0)
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
-                else
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idle);
-                
+                playerStatus.setFlagServerRpc(3, false);  
+                playerStatus.setFlagServerRpc(4, false);     
             }
-               
-
+                                                             //WASD
+            
             //JUMP
-            if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {
+            if (Input.GetKey(KeyCode.Space) && controller.isGrounded) 
+            {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravityAcceleration);
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Jump);
+                playerStatus.setFlagServerRpc(5, true); //SPACE
             }
-
+            else
+                playerStatus.setFlagServerRpc(5, false); //SPACE
+            
             velocity.x = speed * direction.x;
             velocity.z = speed * direction.z;
         } 
@@ -377,10 +378,10 @@ public class PlayerManager : NetworkBehaviour {
         {
             if (direction.x != 0.0f || direction.z != 0.0f)
                 speed = walkSpeed;
-            if (velocity.y > 0)
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Rises);
-            else
-                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Falls);
+            // if (velocity.y > 0)
+            //     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Rises);
+            // else
+            //     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Falls);
         }
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;
