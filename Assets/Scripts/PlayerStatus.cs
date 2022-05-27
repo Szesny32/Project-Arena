@@ -6,7 +6,16 @@ using UnityEngine;
 
 public class PlayerStatus : NetworkBehaviour
 {
-    public enum State {Idlee, Walk, Run, Jump, Falls, Rises, Aiming, Crouch, CrouchAim, CrouchMove, WalkingAim, IdleAim, Dying};
+    public enum State 
+    {
+        Idle, IdleAim, IdleShoot, IdleReload,
+        Walk, WalkAim, WalkShoot, WalkReload,
+        Run, RunAim, RunShoot, RunReload,
+        Crouch, CrouchAim, CrouchShoot, CrouchReload,
+        Crouching,  CrouchingAim, CrouchingShoot, CrouchingReload,
+        Jump, Falls, Rises, 
+        Dying
+    };
     public NetworkVariable<State> state = new NetworkVariable<State>();
     
 
@@ -17,7 +26,7 @@ public class PlayerStatus : NetworkBehaviour
     {   
         if (!IsLocalPlayer) return;
         
-        UpdateStatusServerRpc(State.Idlee);
+        UpdateStatusServerRpc(State.Idle);
     }
 
     // Update is called once per frame

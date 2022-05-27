@@ -120,10 +120,12 @@ public class PlayerManager : NetworkBehaviour {
             gravity();
             if(HUD.HP.Value!=0f)
             {
+
+            
+                movement();
                 if(reloadTimer<=0f)
                     shootingTest();
                 mouse();
-                movement();
             }
             else
                 playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Dying);
@@ -172,10 +174,22 @@ public class PlayerManager : NetworkBehaviour {
         RaycastHit hit;
 
 
-        if (Input.GetMouseButton(0) && shootTimer<=0f) 
-        {
+        bool aiming = playerStatus.state.Value == PlayerStatus.State.IdleAim 
+        || playerStatus.state.Value ==PlayerStatus.State.WalkAim 
+        || playerStatus.state.Value == PlayerStatus.State.RunAim;
+        if (Input.GetMouseButton(0) && shootTimer<=0f && aiming) 
+        {  
+
+
             if(HUD.ammunition>0)
             {
+                if(playerStatus.state.Value == PlayerStatus.State.IdleAim)
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleShoot);
+                else if(playerStatus.state.Value ==PlayerStatus.State.WalkAim)
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkShoot);
+                else if(playerStatus.state.Value == PlayerStatus.State.RunAim)
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunShoot);
+
                 shootTimer = shootDelay;
                 HUD.ammunition--;
                 
@@ -203,6 +217,17 @@ public class PlayerManager : NetworkBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.R) && reloadTimer <= 0)
         {
+            if(playerStatus.state.Value == PlayerStatus.State.Idle || playerStatus.state.Value == PlayerStatus.State.IdleAim)
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleReload);
+            else if(playerStatus.state.Value == PlayerStatus.State.Walk || playerStatus.state.Value == PlayerStatus.State.WalkAim)
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkReload);
+            else if(playerStatus.state.Value == PlayerStatus.State.Run || playerStatus.state.Value == PlayerStatus.State.RunAim)
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunReload);
+            else if(playerStatus.state.Value == PlayerStatus.State.Crouch || playerStatus.state.Value == PlayerStatus.State.CrouchAim)
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchReload);
+            else if(playerStatus.state.Value == PlayerStatus.State.Crouching || playerStatus.state.Value == PlayerStatus.State.CrouchingAim)
+                playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchingReload);
+            
             reloadTimer = reloadDelay;
             HUD.ammunition = HUD.maxAmmunition;
             HUD.AmmoImage.SetActive(false);
@@ -255,6 +280,7 @@ public class PlayerManager : NetworkBehaviour {
 
     void mouse() 
     {
+
         if (Input.GetMouseButton(0) && shootTimer==shootDelay && reloadTimer<=0f&& HUD.ammunition>0) 
         {
             HUD.setCrosshairScale(new Vector3(2f, 2, 2f));
@@ -267,6 +293,7 @@ public class PlayerManager : NetworkBehaviour {
             sensitivity = 0.5f * mouseSensitivity;
              HUD.crosshairScalingTime = 1f/0.25f;
         }
+
         else
         {
             HUD.setCrosshairScale(new Vector3(1f, 1f, 1f));
@@ -301,18 +328,21 @@ public class PlayerManager : NetworkBehaviour {
                 if (Input.GetKey(KeyCode.LeftShift)) 
                 {
                     speed = runSpeed;
+                    if(Input.GetMouseButton(1) && reloadTimer<=0f)
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.RunAim);
+                    else
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Run);
                 }
                 else if (Input.GetKey(KeyCode.LeftControl)) 
                 {
                     speed = crouchSpeed;
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.CrouchMove);
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Crouching);
                 } 
                 else 
                 {
                     speed = walkSpeed;
                     if(Input.GetMouseButton(1) && reloadTimer<=0f)
-                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkingAim);
+                        playerStatus.UpdateStatusServerRpc(PlayerStatus.State.WalkAim);
                     else
                         playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Walk);
                 }
@@ -329,7 +359,7 @@ public class PlayerManager : NetworkBehaviour {
                 else if(Input.GetMouseButton(1) && reloadTimer<=0)
                     playerStatus.UpdateStatusServerRpc(PlayerStatus.State.IdleAim);
                 else
-                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idlee);
+                    playerStatus.UpdateStatusServerRpc(PlayerStatus.State.Idle);
                 
             }
                

@@ -37,11 +37,11 @@ public class AudioController : NetworkBehaviour
         PlayerStatus.State state = playerStatus.state.Value;  
         if(IsLocalPlayer)
         {
-            if(state==PlayerStatus.State.Walk || state==PlayerStatus.State.WalkingAim)
+            if(state==PlayerStatus.State.Walk || state==PlayerStatus.State.WalkAim ||  state==PlayerStatus.State.WalkShoot)
             {
                 setAudioServerRpc(1);
             }
-            else if(state==PlayerStatus.State.Run)
+            else if(state==PlayerStatus.State.Run || state==PlayerStatus.State.RunAim||  state==PlayerStatus.State.RunShoot)
             {
                 setAudioServerRpc(2);
             }

@@ -1150,7 +1150,7 @@ Animator:
   m_GameObject: {fileID: 3506804646838411666}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e9261331fb6bae94290d04b047216960, type: 2}
+  m_Controller: {fileID: 9100000, guid: aace9244bdaeac149851aa2995f9de0c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1296,6 +1296,8 @@ MonoBehaviour:
     m_Bits: 192
   team:
     m_InternalValue: 0
+  shoot:
+    m_InternalValue: 0
   _red: {fileID: 2800000, guid: 1dc5649ba5612364ea83aada38b1da24, type: 3}
   _blue: {fileID: 2800000, guid: 48ac2fbe689566a4c8fd02ee4cf103d5, type: 3}
   audioSource: {fileID: 9171214417596623757}
@@ -1395,6 +1397,7 @@ MonoBehaviour:
   sliderSHIELD: {fileID: 0}
   SHIELD:
     m_InternalValue: 0
+  crosshairScalingTime: 4
   AmmoImage: {fileID: 0}
   Reloading_Circle: {fileID: 0}
   CircleFill: {fileID: 0}
