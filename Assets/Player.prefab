@@ -1280,9 +1280,6 @@ MonoBehaviour:
   debug: 1
   cameraMinRange: -30
   cameraMaxRange: 60
-  crouchSpeed: 2
-  walkSpeed: 4
-  runSpeed: 6
   jumpHeight: 0.6
   gravityAcceleration: -9.81
   networkPositionDirection:
@@ -1314,9 +1311,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a98ecccc2224bd4f8a8f649b050df76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
+  PPM:
     m_InternalValue: 0
-  debug: 0
+  LPM:
+    m_InternalValue: 0
+  WASD:
+    m_InternalValue: 0
+  SHIFT:
+    m_InternalValue: 0
+  SPACE:
+    m_InternalValue: 0
+  CTRL:
+    m_InternalValue: 0
+  R:
+    m_InternalValue: 0
+  DEAD:
+    m_InternalValue: 0
 --- !u!114 &3538337171820132996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,7 +1583,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
