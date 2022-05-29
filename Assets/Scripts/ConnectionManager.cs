@@ -15,7 +15,7 @@ public class ConnectionManager : MonoBehaviour
     UNetTransport transport;
     public AudioSource audioSource;
     public AudioListener audioListener;
-    private AudioClip glitchClip;
+    private AudioClip introClip;
 
     private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
     private float[] yStartPos = { 0f, 0f,0f,0f,1.432f, 1.432f};
@@ -25,11 +25,11 @@ public class ConnectionManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        glitchClip = Resources.Load<AudioClip>("Glitch");       
+        introClip = Resources.Load<AudioClip>("intro");       
         if(!audioSource.isPlaying)
         {
-            audioSource.clip = glitchClip;
-            //audioSource.Play();
+            audioSource.clip = introClip;
+            audioSource.Play();
         }
 
         playerHUD.SetActive(false);

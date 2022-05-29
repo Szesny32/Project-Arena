@@ -35,6 +35,8 @@ public class PlayerManager : NetworkBehaviour {
     private AudioClip shoot1;
     private AudioClip shoot2;
     private AudioClip shoot3;
+    private AudioClip noAmmo;
+    private AudioClip reload;
     private Vector3 velocity = Vector3.zero;
     private Vector3 direction = Vector3.zero;
     private HUD_Manager HUD;
@@ -70,6 +72,8 @@ public class PlayerManager : NetworkBehaviour {
         shoot1 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_2");
         shoot2 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_3");
         shoot3 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_4");
+        noAmmo = Resources.Load<AudioClip>("noAmmo");
+        reload = Resources.Load<AudioClip>("reload");
         setController(0.55f, 0.2f);
 
 
@@ -151,11 +155,13 @@ public class PlayerManager : NetworkBehaviour {
         }
         else if(shoot.Value==2)
         {
-            ///audioSource.PlayOneShot(clip);
+            if(!audioSource.isPlaying)
+                audioSource.PlayOneShot(noAmmo);
         }
         if(shoot.Value==3)
         {
-           // audioSource.PlayOneShot(clip);
+            if(!audioSource.isPlaying)
+                audioSource.PlayOneShot(reload);
         }
         
     }
