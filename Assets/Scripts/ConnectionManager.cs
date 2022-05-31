@@ -10,6 +10,7 @@ public class ConnectionManager : MonoBehaviour
 
     public GameObject connectButtonPanel;
     public GameObject playerHUD;
+    public GameObject Lobby;
     public string ipAddress = "127.0.0.1";
 
     UNetTransport transport;
@@ -33,7 +34,6 @@ public class ConnectionManager : MonoBehaviour
         }
 
         playerHUD.SetActive(false);
-
     }
 
     public void Host() {
@@ -60,16 +60,10 @@ public class ConnectionManager : MonoBehaviour
     private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate callback) {
 
         bool approve = System.Text.Encoding.UTF8.GetString(connectionData).Equals("Password123");
-        callback(true, null, approve, GetRandomSpawnLocation(), Quaternion.identity);
+        callback(true, null, approve, Vector3.zero, Quaternion.identity);
 
     }
 
-    Vector3 GetRandomSpawnLocation() {
-
-        int spot = UnityEngine.Random.Range(0, 5);
-
-        return new Vector3(xStartPos[spot] + UnityEngine.Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+UnityEngine.Random.Range(-0.5f, 0.5f));
-    }
 
     public void AddressChanged(string address) {
 

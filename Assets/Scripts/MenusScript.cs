@@ -15,13 +15,7 @@ public class MenusScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Tab)){
-            tabMenu.gameObject.SetActive(false);
-        }
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            tabMenu.gameObject.SetActive(true);
-        }
-        
+
         
     }
 }

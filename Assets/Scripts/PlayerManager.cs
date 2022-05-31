@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using Unity.Collections;
 
 public class PlayerManager : NetworkBehaviour {
     //[SerializeField] private GameObject modelPrefab;
     [SerializeField] private float mouseSensitivity = 200.0f;
     public GameObject model;
     [SerializeField] private  GameObject playerCamera;
-    [SerializeField] private bool debug = false;
+    //[SerializeField] private bool debug = false;
     private Vector3 cameraRotation = Vector3.zero;
     [SerializeField] private float cameraMinRange = -30.0f;
     [SerializeField] private float cameraMaxRange = 60.0f;
-
+    [SerializeField] private GameObject TeamPanel;
+    [SerializeField] private Text inputName;
+    public NetworkVariable<FixedString64Bytes> playerName =  new NetworkVariable<FixedString64Bytes>();
     private float crouchSpeed = 2f;
     private float walkSpeed = 2.5f;
     private float runSpeed = 4.0f;
@@ -25,7 +30,8 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private LayerMask layerMask;
     [SerializeField] public NetworkVariable<int> team = new NetworkVariable<int>();
     [SerializeField] public NetworkVariable<int> shoot = new NetworkVariable<int>();
-    
+
+ 
     private int prevTeam;
     public Texture _red, _blue;
     private CharacterController controller;
@@ -46,27 +52,39 @@ public class PlayerManager : NetworkBehaviour {
     private float reloadDelay = 1.0f;
     private float reloadTimer = 0f;
     private float sensitivity = 0f;
-    
 
     private float[] xStartPos = { -2.38f, 5.16f, 5.71f, -4.507f, -2.21f, 1.12f};
     private float[] yStartPos = { 0f, 0f,0f,0f,1.432f, 1.432f};
     private float[] zStartPos = { -2.55f, -2.63f,8.78f, 8.299f, 2.302f, 1.71f};
+    public TextMeshProUGUI TabMenuTeam1;
+    public TextMeshProUGUI TabMenuTeam2;
+    public GameManagerScript GM;
+
+    public GameObject tabMenu;
 
     public bool friendlyFire = false;
     void Start() {
         // setModel(modelPrefab);
         //playerCamera = transform.Find("Camera").gameObject;
+   
+
 
         if (!IsLocalPlayer) {
             playerCamera.GetComponent<Camera>().enabled = false;
             GetComponent<AudioListener>().enabled = false;
             return;
+            
         }
-        
-        Cursor.lockState = CursorLockMode.Locked;
+        GameObject Lobby = GameObject.Find("Lobby");
+        transform.position = new Vector3(Lobby.transform.position.x, Lobby.transform.position.y + 2f,Lobby.transform.position.z);
+        UpdateTeamServerRpc(0);
+        TeamPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None; 
         refreshCameraPosition();
 
         controller = GetComponent<CharacterController>(); //shift alt down
+        controller.enabled = false;
         playerStatus = GetComponent<PlayerStatus>();
         shoot0 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_1");
         shoot1 = Resources.Load<AudioClip>("Scifi Guns SFX Pack/Gun2_2");
@@ -83,8 +101,7 @@ public class PlayerManager : NetworkBehaviour {
         //model.transform.Find("Robot_Soldier_Legs2").GetComponent<Renderer>().enabled = false;
         HUD = GetComponent<HUD_Manager>(); 
         
-         int spot = Random.Range(0, 5);
-        transform.position =  new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
+        GM = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
 
     }
 
@@ -100,13 +117,37 @@ public class PlayerManager : NetworkBehaviour {
         if(timer < 0.5f)
             return;
 
+        //Debug.Log(playerName.Value);
         reloadTimer -= Time.deltaTime;
         shootTimer -= Time.deltaTime;
         if(prevTeam!=team.Value)
             setTexture();
 
-        if (IsLocalPlayer) 
+        if (IsLocalPlayer && team.Value!=0) 
         {
+       
+
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                if(tabMenu.active)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    tabMenu.SetActive(false);
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    tabMenu.SetActive(true);
+                }
+            
+            }
+
+        TabMenuTeam1.text = GM.redTeamList.Value.ToString();
+        //Debug.Log(TabMenuTeam1.text);
+        TabMenuTeam2.text = GM.blueTeamList.Value.ToString();
+
+  
 
         if(reloadTimer > 0)
         {
@@ -123,9 +164,11 @@ public class PlayerManager : NetworkBehaviour {
             gravity();
             if(HUD.HP.Value!=0f)
             {
-
-            
                 movement();
+
+
+
+
                 if(reloadTimer<=0f)
                     shootingTest();
                 mouse();
@@ -133,8 +176,8 @@ public class PlayerManager : NetworkBehaviour {
             else
                 playerStatus.setFlagServerRpc(8, true);
             
-
             UpdateClientServerRpc(transform.position, transform.eulerAngles);
+
             UpdateDirectionMagnitudeServerRpc(Mathf.Clamp01(direction.magnitude));
             refreshCameraPosition();
         }
@@ -392,6 +435,7 @@ public class PlayerManager : NetworkBehaviour {
         //MOVE BY DISTANCE (distance = velocity * time)
         Vector3 distance = velocity * Time.deltaTime;
         controller.Move(distance);
+
     }
 
 
@@ -427,12 +471,66 @@ public class PlayerManager : NetworkBehaviour {
 
 
 
+
+
     [ServerRpc(RequireOwnership = false)]
     public void UpdateTeamServerRpc(int newTeam) 
     {
 
         team.Value = newTeam;
     }
+
+ public void changeTeam(int team)
+    {
+        UpdateTeamServerRpc(team);
+        Cursor.lockState = CursorLockMode.Locked;
+        tabMenu.SetActive(false);
+    }
+
+    public void changeTeamA()
+    {
+        changeTeam(1);
+    }
+    public void changeTeamB()
+    {
+       changeTeam(2);
+    }
+
+
+    private void joinToGame(int team)
+    {
+        if(inputName.text.Length!=0)
+        {
+            UpdateTeamServerRpc(team);
+            updateNameServerRpc(inputName.text);
+            //Debug.Log(inputName.text);
+            Cursor.lockState = CursorLockMode.Locked;
+            int spot = Random.Range(0, 5);
+            transform.position = new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
+            controller.enabled = true;
+            TeamPanel.SetActive(false);
+        }
+    }
+
+    public void teamA()
+    {
+        joinToGame(1);
+    }
+
+    public void teamB()
+    {
+        joinToGame(2);
+    }
+
+   
+[ServerRpc]
+    public void updateNameServerRpc(string name)
+    {
+        playerName.Value = name;
+    }
+
+
+
 
     private void setTexture()
     {   

@@ -21,13 +21,13 @@ public class GameManagerScript : NetworkBehaviour
     [SerializeField] private NetworkVariable<int> blueTeamScore =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> redTeamScore =  new NetworkVariable<int>();
 
-    [SerializeField] private NetworkVariable<FixedString64Bytes> blueTeamList =  new NetworkVariable<FixedString64Bytes>();
-    [SerializeField] private NetworkVariable<FixedString64Bytes> redTeamList =  new NetworkVariable<FixedString64Bytes>();
+    public NetworkVariable<FixedString64Bytes> blueTeamList =  new NetworkVariable<FixedString64Bytes>();
+    public NetworkVariable<FixedString64Bytes> redTeamList =  new NetworkVariable<FixedString64Bytes>();
 
 
     //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab
-    public TextMeshProUGUI TabMenuTeam1;
-    public TextMeshProUGUI TabMenuTeam2;
+    //public TextMeshProUGUI TabMenuTeam1;
+    //public TextMeshProUGUI TabMenuTeam2;
 
 
     public TextMeshProUGUI HUD_roundTimer;
@@ -47,72 +47,72 @@ public class GameManagerScript : NetworkBehaviour
       
         if(NetworkManager.IsServer)
         {
-              update_RoundTimer_ServerRpc();
+            update_RoundTimer_ServerRpc();
+            refreshMe();
             //NetworkManager.ConnectedClientsList
-            int tmp = NetworkManager.ConnectedClientsIds.Count;
+            // int tmp = NetworkManager.ConnectedClientsIds.Count;
+
+            // if(tmp!=n)
+            // {
+            //     n = tmp;
+            //     int x = n/2;
+            //     int i = 0;
+            //     foreach(ulong clientId in NetworkManager.ConnectedClientsIds)
+            //     {
+            //         //GameObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
+            //         //NetworkObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
+            //         //int newTeam = i%2+1;
+            //         //playerObj.GetComponent<PlayerManager>().UpdateTeamServerRpc(newTeam);
+
+            //         // Texture team;
+            //         // if(i < x)
+            //         //     team = _red;
+            //         // else
+            //         //     team = _blue;
+            //         ++i; 
+            //     }
+            // }
             
-            if(tmp!=n)
-            {
-                n = tmp;
-                int x = n/2;
-                int i = 0;
-             
-                foreach(ulong clientId in NetworkManager.ConnectedClientsIds)
-                {
-                    //GameObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
-                    NetworkObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
-                    int newTeam = i%2+1;
-                    playerObj.GetComponent<PlayerManager>().UpdateTeamServerRpc(newTeam);
-
-                 
-
-                    // Texture team;
-                    // if(i < x)
-                    //     team = _red;
-                    // else
-                    //     team = _blue;
-
-                        // playerObj.transform.Find("Model/Robot_Soldier_Arms1").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                        // playerObj.transform.Find("Model/Robot_Soldier_Arms2").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                        // playerObj.transform.Find("Model/Robot_Soldier_Body").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                        // playerObj.transform.Find("Model/Robot_Soldier_Feet").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                        // playerObj.transform.Find("Model/Robot_Soldier_Head").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                        // playerObj.transform.Find("Model/Robot_Soldier_Legs2").GetComponent<Renderer>().material.SetTexture("_MainTex", team);
-                ++i; 
-                }
-
-            }
-            refresh_playerList_ServerRpc();
         }
-
+        //refresh_playerList_ServerRpc();
         float minutes = Mathf.Floor(roundTimer.Value/60);
         float seconds = Mathf.Floor(roundTimer.Value%60f);
         HUD_roundTimer.text = $"{minutes}:{seconds}";
 
 
-        TabMenuTeam1.text = redTeamList.Value.ToString();
-        TabMenuTeam2.text = blueTeamList.Value.ToString();
+        //TabMenuTeam1.text = redTeamList.Value.ToString();
+        //Debug.Log(TabMenuTeam1.text);
+        //TabMenuTeam2.text = blueTeamList.Value.ToString();
 
 
     }
 
-    [ServerRpc]
-    public void refresh_playerList_ServerRpc()
+
+private void refreshMe()
+{
+    string redLista = "";
+    string blueLista = "";
+
+    foreach(ulong clientId in NetworkManager.ConnectedClientsIds)
     {
-         redTeamList.Value="";
-          blueTeamList.Value="";
-         
-        foreach(ulong clientId in NetworkManager.ConnectedClientsIds)
-        {
             NetworkObject playerObj = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
-            if(playerObj.GetComponent<PlayerManager>().team.Value == 1)
-                redTeamList.Value+=$"{playerObj.name}\n";
-            
-            else if(playerObj.GetComponent<PlayerManager>().team.Value == 2)
-                blueTeamList.Value+=$"{playerObj.name}\n";
-            
-        }
+            string playerName = playerObj.GetComponent<PlayerManager>().playerName.Value.ToString();
+            int playerTeam = playerObj.GetComponent<PlayerManager>().team.Value;
+            if(playerTeam == 1)
+                redLista+= playerName + "\n";
+            else if(playerTeam == 2)
+                blueLista+= playerName + "\n"; 
     }
+    refresh_playerList_ServerRpc(redLista, blueLista);
+}
+    [ServerRpc]
+    public void refresh_playerList_ServerRpc(string A, string B)
+    {
+            redTeamList.Value=A;
+            blueTeamList.Value=B;
+    }
+
+
 
 
     [ServerRpc]
