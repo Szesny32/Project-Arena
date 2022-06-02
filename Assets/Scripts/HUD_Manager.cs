@@ -17,7 +17,7 @@ public class HUD_Manager : NetworkBehaviour
     public Slider sliderHP;
     public NetworkVariable<float> HP = new NetworkVariable<float>();
     public NetworkVariable<bool> isAlive = new NetworkVariable<bool>();
-    private float MAXHP = 100.0f;
+    public float MAXHP = 100.0f;
     private Color effectColor_HP = new Color(1f,0f,0f,0.5f);
     public TextMeshProUGUI ammoText;
 
@@ -30,7 +30,7 @@ public class HUD_Manager : NetworkBehaviour
     public NetworkVariable<float> SHIELD = new NetworkVariable<float>();
     private Color effectColor_SHIELD = new Color(0.0859375f, 0.82421875f, 0.94140625f, 0.5f);
     private float SHIELD_Regeneration = 20f; // (20/s)
-    private float MAXSHIELD = 100.0f;
+    public float MAXSHIELD = 100.0f;
     private float timer = 0.0f;
     private float rechargeDelay = 2.0f;
     private float rechargeTimer = 0.0f;
@@ -56,11 +56,11 @@ public class HUD_Manager : NetworkBehaviour
         ammunition = maxAmmunition;
         ammoText = GameObject.Find("PlayerHUDCanvas/AmmoPanel/AmmoCounter").GetComponent<TextMeshProUGUI>();   
         ammoText.text= $"{ammunition}/{maxAmmunition}";
-        setHPServerRpc(MAXHP);
+        setHPServerRpc();
         sliderHP = GameObject.Find("PlayerHUDCanvas/HealthBar").GetComponent<Slider>();
         sliderHP.value = MAXHP; //= HP.Value - not working!
 
-        setSHIELDServerRpc(MAXSHIELD);
+        setSHIELDServerRpc();
         sliderSHIELD = GameObject.Find("PlayerHUDCanvas/ShieldBar").GetComponent<Slider>();
         sliderSHIELD.value = MAXSHIELD;
         
@@ -74,7 +74,8 @@ public class HUD_Manager : NetworkBehaviour
         if(timer < 0.5f)
             return;
         if (IsLocalPlayer)
-        {
+        {        
+            sliderHP.value = HP.Value;
             if(playerReceivedDmg.Value )
             {
                 if(SHIELD.Value>0)
@@ -134,16 +135,17 @@ public class HUD_Manager : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void setHPServerRpc(float newHP)
+    public void setHPServerRpc()
     {  
-        HP.Value = newHP;
+        HP.Value = MAXHP;
         isAlive.Value = true;
+
     }
 
     [ServerRpc]
-    public void setSHIELDServerRpc(float newSHIELD)
+    public void setSHIELDServerRpc()
     {  
-        SHIELD.Value = newSHIELD;
+        SHIELD.Value = MAXSHIELD;
     }
 
     [ServerRpc]

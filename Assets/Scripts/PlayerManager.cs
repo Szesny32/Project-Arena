@@ -123,7 +123,11 @@ public class PlayerManager : NetworkBehaviour {
         if(prevTeam!=team.Value)
             setTexture();
 
-        if (IsLocalPlayer && team.Value!=0) 
+        if(IsLocalPlayer && GM.pauseTimer.Value == 5.0f)
+        {
+                respawn();
+        }
+        if (IsLocalPlayer && team.Value!=0 && GM.pause.Value == false) 
         {
        
 
@@ -505,13 +509,18 @@ public class PlayerManager : NetworkBehaviour {
             updateNameServerRpc(inputName.text);
             //Debug.Log(inputName.text);
             Cursor.lockState = CursorLockMode.Locked;
-            int spot = Random.Range(0, 5);
-            transform.position = new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
-            controller.enabled = true;
+            respawnlocation();
             TeamPanel.SetActive(false);
         }
     }
 
+    private void respawnlocation()
+    {
+        controller.enabled = false;
+        int spot = Random.Range(0, 5);
+        transform.position = new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
+        controller.enabled = true;
+    }
     public void teamA()
     {
         joinToGame(1);
@@ -553,5 +562,12 @@ public class PlayerManager : NetworkBehaviour {
         shoot.Value = x;
     }
 
+
+    public void respawn()
+    {  
+        HUD.setHPServerRpc();
+        HUD.setSHIELDServerRpc();
+       respawnlocation();
+    }
 }
 
