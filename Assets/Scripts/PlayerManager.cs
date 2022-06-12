@@ -61,7 +61,7 @@ public class PlayerManager : NetworkBehaviour {
     public GameManagerScript GM;
 
     public GameObject tabMenu;
-
+    bool refToken = false;
     public bool friendlyFire = false;
     void Start() {
         // setModel(modelPrefab);
@@ -123,10 +123,14 @@ public class PlayerManager : NetworkBehaviour {
         if(prevTeam!=team.Value)
             setTexture();
 
-        if(IsLocalPlayer && GM.pauseTimer.Value == 5.0f)
-        {
-                respawn();
-        }
+        
+     
+        
+        if(IsLocalPlayer && GM.pause.Value == true && refToken==false)
+            respawn();
+        
+        refToken = GM.pause.Value;
+
         if (IsLocalPlayer && team.Value!=0 && GM.pause.Value == false) 
         {
        
