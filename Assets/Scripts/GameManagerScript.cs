@@ -58,8 +58,13 @@ public class GameManagerScript : NetworkBehaviour
     if(NetworkManager.IsHost)
     {
         if(Input.GetKeyDown(KeyCode.P) && players.Value > 1)
-            setGameModeServerRpc(1);
-            
+        {
+            if(gameMode.Value!=0)
+                setGameModeServerRpc(0);
+            else
+                setGameModeServerRpc(1);
+        }
+
     }
         if(NetworkManager.IsServer)
         {
@@ -120,9 +125,12 @@ public class GameManagerScript : NetworkBehaviour
 public void setGameModeServerRpc(int mode)
 {
     gameMode.Value = mode;
-    if(mode!=0)
-        pause.Value = false;
-        restart_RoundTimer_ServerRpc();
+    pause.Value = true;
+    restart_PauseTimer_ServerRpc();
+    restart_RoundTimer_ServerRpc();
+    round.Value=0;
+    blueTeamScore.Value = 0;
+    redTeamScore.Value = 0;          
 }
 
 
@@ -206,7 +214,7 @@ private void refreshMe()
                     roundTimer.Value = roundTime;
                     round.Value++;
                     setBlueScoreServerRpc(1);
-                    pauseTimer.Value = 5.0f;
+                   restart_PauseTimer_ServerRpc();
                     pause.Value = true;
                     restart_RoundTimer_ServerRpc();
             }
@@ -215,7 +223,7 @@ private void refreshMe()
                     roundTimer.Value = roundTime;
                     round.Value++;
                     setRedScoreServerRpc(1);
-                    pauseTimer.Value = 5.0f;
+                    restart_PauseTimer_ServerRpc();
                     pause.Value = true;
                     restart_RoundTimer_ServerRpc();
             }
@@ -223,19 +231,14 @@ private void refreshMe()
             {
                 roundTimer.Value = roundTime;
                 round.Value++;
-                pauseTimer.Value = 5.0f;
+                restart_PauseTimer_ServerRpc();
                 pause.Value = true;
                 restart_RoundTimer_ServerRpc();
             }
 
             if(round.Value ==8)
             {
-                round.Value=0;
-                setBlueScoreServerRpc(0);
-                setRedScoreServerRpc(0);
-                pauseTimer.Value = 5.0f;
-                pause.Value = true;
-                restart_RoundTimer_ServerRpc();
+                setGameModeServerRpc(0);
             }
         }
     }
@@ -264,5 +267,9 @@ private void refreshMe()
         roundTimer.Value = roundTime;
     }
 
+  [ServerRpc]
+    public void restart_PauseTimer_ServerRpc() {
+        pauseTimer.Value = 5.0f;
+    }
 
 }
