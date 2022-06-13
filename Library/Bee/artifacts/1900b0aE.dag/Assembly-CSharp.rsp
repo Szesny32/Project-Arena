@@ -354,7 +354,6 @@
 "Assets/Scripts/AnimationController.cs"
 "Assets/Scripts/AudioController.cs"
 "Assets/Scripts/BodyPart.cs"
-"Assets/Scripts/cannonScript.cs"
 "Assets/Scripts/ConnectionManager.cs"
 "Assets/Scripts/GameManagerScript.cs"
 "Assets/Scripts/HUD_Manager.cs"

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -6,118 +7,83 @@ using TMPro;
 using Unity.Collections;
 public class GameManagerScript : NetworkBehaviour
 {
-    // Start is called before the first frame update
 
-    private float roundTime = 300f;
-    [SerializeField] private NetworkVariable<float> roundTimer =  new NetworkVariable<float>();
-    public NetworkVariable<float> pauseTimer =  new NetworkVariable<float>();
-    public NetworkVariable<bool> pause =  new NetworkVariable<bool>();
-
-
-    [SerializeField] private NetworkVariable<int> round =  new NetworkVariable<int>();
-    [SerializeField] private NetworkVariable<int> players =  new NetworkVariable<int>();
+    //Red Team
+    public NetworkVariable<FixedString64Bytes> redTeamList =  new NetworkVariable<FixedString64Bytes>();
+    public TextMeshProUGUI teamRedScore;
+    [SerializeField] private NetworkVariable<int> redTeamScore =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> playersInRedTeam =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> playersAliveInRedTeam =  new NetworkVariable<int>();
 
+    //Blue Team
+    public NetworkVariable<FixedString64Bytes> blueTeamList =  new NetworkVariable<FixedString64Bytes>();
+    public TextMeshProUGUI teamBlueScore;
+    [SerializeField] private NetworkVariable<int> blueTeamScore =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> playersInBlueTeam =  new NetworkVariable<int>();
     [SerializeField] private NetworkVariable<int> playersAliveInBlueTeam =  new NetworkVariable<int>();
-
-    [SerializeField] private NetworkVariable<int> blueTeamScore =  new NetworkVariable<int>();
-    [SerializeField] private NetworkVariable<int> redTeamScore =  new NetworkVariable<int>();
-
-    public NetworkVariable<FixedString64Bytes> blueTeamList =  new NetworkVariable<FixedString64Bytes>();
-    public NetworkVariable<FixedString64Bytes> redTeamList =  new NetworkVariable<FixedString64Bytes>();
-    [SerializeField] private NetworkVariable<int> gameMode =  new NetworkVariable<int>();
-
-    //do podłączenia textboxów z listą graczy dla poszczególnych teamów w menu pod Tab
-    //public TextMeshProUGUI TabMenuTeam1;
-    //public TextMeshProUGUI TabMenuTeam2;
-
-    public TextMeshProUGUI teamRedScore;
-    public TextMeshProUGUI teamBlueScore;
-
+    
     public TextMeshProUGUI HUD_roundTimer;
+    public NetworkVariable<float> pauseTimer =  new NetworkVariable<float>();
+    public NetworkVariable<bool> pause =  new NetworkVariable<bool>();
+    private float roundTime = 300f;
+    [SerializeField] private NetworkVariable<float> roundTimer =  new NetworkVariable<float>();
+    public NetworkVariable<int> gameMode =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> round =  new NetworkVariable<int>();
+    [SerializeField] private NetworkVariable<int> players =  new NetworkVariable<int>();
 
-    int n = 0;
+    
     void Start()
     {
-         //Cursor.lockState = CursorLockMode.Locked;
-
-            teamRedScore.text="X";
-            teamBlueScore.text="X";
-         
+        teamRedScore.text="0";
+        teamBlueScore.text="0";
+        setPause_ServerRpc();
     }
-    public Texture _red, _blue;
-    // Update is called once per frame
-
 
     void Update()
     {
         float minutes;
         float seconds;
-    if(NetworkManager.IsHost)
-    {
-        if(Input.GetKeyDown(KeyCode.P) && players.Value > 1)
+        if(NetworkManager.IsHost)
         {
-            if(gameMode.Value!=0)
-                setGameModeServerRpc(0);
-            else
-                setGameModeServerRpc(1);
-        }
+            if(Input.GetKeyDown(KeyCode.P) && players.Value > 1)
+            {
+                if(gameMode.Value!=0)
+                    setGameModeServerRpc(0);
+                else
+                    setGameModeServerRpc(1);
+            }
 
-    }
+        }
         if(NetworkManager.IsServer)
         {
             refreshMe();
             if(gameMode.Value != 0)
                 update_RoundTimer_ServerRpc();
-
-
-
-       
+           
         }
 
-           
-            teamRedScore.text=$"{redTeamScore.Value}";
-            teamBlueScore.text=$"{blueTeamScore.Value}";
-            if(gameMode.Value != 0)
-            {  
-                
-                if(pause.Value)
-                {
-                      minutes = Mathf.Floor(pauseTimer.Value/60);
-                      seconds = Mathf.Floor(pauseTimer.Value%60f);
-                       HUD_roundTimer.text = $"PAUSE\n{minutes}:{seconds}";
-                }
-                else
-                {
-                    minutes = Mathf.Floor(roundTimer.Value/60);
-                    seconds = Mathf.Floor(roundTimer.Value%60f);
-                    HUD_roundTimer.text = $"{minutes}:{seconds}";
-                }
-        
-                    
+        teamRedScore.text=$"{redTeamScore.Value}";
+        teamBlueScore.text=$"{blueTeamScore.Value}";
+        if(gameMode.Value != 0)
+        {  
+            if(pause.Value)
+            {
+                minutes = Mathf.Floor(pauseTimer.Value/60);
+                seconds = Mathf.Floor(pauseTimer.Value%60f);
+               HUD_roundTimer.text = "PAUSE\n"+ minutes.ToString("00") + " : "+seconds.ToString("00");
+                //$"PAUSE\n{minutes}:{seconds}";
             }
             else
             {
-                HUD_roundTimer.text = "PAUSE";
-            }
 
-            
+                minutes = Mathf.Floor(roundTimer.Value/60);
+                seconds = Mathf.Floor(roundTimer.Value%60f);
+                HUD_roundTimer.text = minutes.ToString("00") + " : "+seconds.ToString("00");
+            }               
         }
-
-
-
-        
-        
-
-
-        //TabMenuTeam1.text = redTeamList.Value.ToString();
-        //Debug.Log(TabMenuTeam1.text);
-        //TabMenuTeam2.text = blueTeamList.Value.ToString();
-
-
-    
+        else
+            HUD_roundTimer.text = "PAUSE";
+    }
 
 
 
@@ -132,9 +98,6 @@ public void setGameModeServerRpc(int mode)
     blueTeamScore.Value = 0;
     redTeamScore.Value = 0;          
 }
-
-
-
 
 
 private void refreshMe()
@@ -185,7 +148,6 @@ private void refreshMe()
     }
 
 
-
     [ServerRpc]
     public void refresh_playerList_ServerRpc(string A, string B)
     {
@@ -194,16 +156,19 @@ private void refreshMe()
     }
 
 
+    [ServerRpc]
+    public void setPause_ServerRpc() 
+    {
+         pause.Value = true;
+    }
+
 
     [ServerRpc]
     public void update_RoundTimer_ServerRpc() 
     {   
-        if(pauseTimer.Value>0.0)
-        {
+        if(pauseTimer.Value > 0.0)
             pauseTimer.Value -= Time.deltaTime;
             
-        }
-
         else
         {
             pause.Value = false;
@@ -267,7 +232,7 @@ private void refreshMe()
         roundTimer.Value = roundTime;
     }
 
-  [ServerRpc]
+    [ServerRpc]
     public void restart_PauseTimer_ServerRpc() {
         pauseTimer.Value = 5.0f;
     }

@@ -124,17 +124,20 @@ public class PlayerManager : NetworkBehaviour {
             setTexture();
 
         
-     
-        
         if(IsLocalPlayer && GM.pause.Value == true && refToken==false)
-            respawn();
+        {
+
+                respawn();
+
         
+        }
+            
         refToken = GM.pause.Value;
+
 
         if (IsLocalPlayer && team.Value!=0 && GM.pause.Value == false) 
         {
        
-
             if(Input.GetKeyDown(KeyCode.Tab))
             {
                 if(tabMenu.active)
@@ -148,11 +151,11 @@ public class PlayerManager : NetworkBehaviour {
                     Cursor.visible = true;
                     tabMenu.SetActive(true);
                 }
-            
             }
 
+
+
         TabMenuTeam1.text = GM.redTeamList.Value.ToString();
-        //Debug.Log(TabMenuTeam1.text);
         TabMenuTeam2.text = GM.blueTeamList.Value.ToString();
 
   
@@ -160,13 +163,14 @@ public class PlayerManager : NetworkBehaviour {
         if(reloadTimer > 0)
         {
             HUD.CircleFill.fillAmount = (Mathf.Clamp(reloadTimer,0f,reloadDelay)/reloadDelay);
-  
         }
         else
         {
             HUD.AmmoImage.SetActive(true);
             HUD.Reloading_Circle.SetActive(false);
         }
+
+
 
 
             gravity();
@@ -525,6 +529,9 @@ public class PlayerManager : NetworkBehaviour {
         transform.position = new Vector3(xStartPos[spot] + Random.Range(-0.5f, 0.5f), yStartPos[spot], zStartPos[spot]+ Random.Range(-0.5f, 0.5f));
         controller.enabled = true;
     }
+
+
+
     public void teamA()
     {
         joinToGame(1);
@@ -571,7 +578,10 @@ public class PlayerManager : NetworkBehaviour {
     {  
         HUD.setHPServerRpc();
         HUD.setSHIELDServerRpc();
-       respawnlocation();
+        respawnlocation();
+
+
+
     }
 }
 
