@@ -227,7 +227,7 @@ public class PlayerManager : NetworkBehaviour {
     void shootingTest() 
     {
         float range = 20f;
-        float damage = 10f;
+        float damage = 35f;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * range, Color.red);
 
