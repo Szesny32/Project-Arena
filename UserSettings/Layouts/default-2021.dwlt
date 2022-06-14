@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 7}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 48
+  controlID: 44
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,21 +317,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Mati\Desktop\ArenaProjekt\Project-Arena
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: ec590000
-    m_LastClickedID: 23020
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ce590000
+    m_LastClickedID: 22990
     m_ExpandedIDs: 00000000c0590000c2590000c4590000c6590000c8590000ca590000cc590000ce59000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000887200005e9c0000c43f0100da4d0100a49b0000e69b0000929b0000a4ca01009e6200007c6a0000066800005c5d0000426b000054680000c4620000
+    m_ExpandedInstanceIDs: c6230000887200005e9c0000c43f0100da4d0100a49b0000e69b0000929b0000a4ca01009e6200007c6a0000066800005c5d0000426b000054680000c462000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,9 +488,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f8610000
-      m_LastClickedID: 25080
-      m_ExpandedIDs: a0eeffff58600000f8600000026100002c61000066610000b0610000bc610000ec610000f8610000
+      m_SelectedIDs: a2810000
+      m_LastClickedID: 33186
+      m_ExpandedIDs: fedfffff5a800000fa800000048100002e81000068810000a2810000b2810000be810000ee810000fa810000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.7319078, y: 0.55, z: 0.2614529}
+    m_Target: {x: 597.1929, y: 541.1538, z: -4.87387}
     speed: 2
-    m_Value: {x: 1.7319078, y: 0.55, z: 0.2614529}
+    m_Value: {x: 637.68506, y: 544.27765, z: -4.609816}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -792,9 +792,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 0.6736097
+    m_Target: 613.1925
     speed: 2
-    m_Value: 0.6736097
+    m_Value: 586.7871
   m_Ortho:
     m_Target: 1
     speed: 2
